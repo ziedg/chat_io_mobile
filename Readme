@@ -1,1 +1,3 @@
-hello
+npm install -g ionic@latest
+npm install
+ionic serve
