@@ -1,0 +1,74 @@
+like-reaction {
+  :focus {
+    outline: none;
+  }
+
+  .toggle-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 19px !important;
+    position: relative;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    padding: 0 !important;
+    /*
+    transition-property: transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: .3s;
+    */
+  }
+  .toggle-icon:before, .toggle-icon:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all .3s ease-out;
+    content: "";
+    background-size: cover;
+    width: 28px;
+    height: 28px;
+  }
+  .toggle-icon:before {
+    background-image: url('../assets/imgs/post/like-outline.png');
+    transition-duration: .3s;
+    transition-timing-function: ease-in;
+  }
+
+  .toggle-icon:active:before {
+    transition: none;
+    transform: scale(1);
+  }
+  .toggle-icon:after {
+    opacity: 0;
+  }
+  .toggle-icon.checked {
+    color: white;
+  }
+  .toggle-icon.checked:before {
+    background-image: url('../assets/imgs/post/like-active.png');
+  }
+  .toggle-icon.checked:after {
+    background-image: url('../assets/imgs/post/like-full.png');
+    animation: likeFly .6s ease-in;
+  }
+
+  @keyframes likeFly {
+    from {
+      opacity: 1;
+    }
+    to {
+      transform: scale(3) rotate(45deg) translateY(-90px);
+      opacity: 0;
+    }
+  }
+
+  @media (min-width: 767px) {
+    .toggle-icon:hover:before {
+      transform: scale(1.2);
+    }
+
+    .toggle-icon.checked:hover:before {
+      transform: scale(1.2);
+    }
+  }
+}

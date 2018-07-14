@@ -1,0 +1,476 @@
+post {
+  .profileIcon {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .global, .users {
+    margin-top: 5px;
+    color: #666;
+    font-size: 0.8em;
+  }
+
+  ion-item {
+    p {
+      display: inline;
+    }
+  }
+
+  .postContent {
+    max-width: 100%;
+    margin-bottom: 14px;
+    margin-top: 10px;
+  }
+
+  ion-label {
+    white-space: unset;
+  }
+
+  ion-card {
+    background-color: white !important;
+    margin: 0 0 8px !important;
+    width: 100% !important;
+    p{
+      color: #333 !important;
+    }
+    ion-item {
+      background-color: transparent !important;
+
+      .userName {
+        font-weight: 700;
+        font-style: unset;
+        font-size: 14px;
+      }
+
+      .data{
+        font-size: 11px !important;
+        color: #666;
+        ion-icon{
+        font-size: 11px;
+        }
+      }
+    }
+    .user{
+      margin-left: 7px;
+      padding-left: 0;
+    }
+    ion-avatar{
+      margin-right: 10px !important;
+    }
+
+    ion-col {
+      ion-icon {
+        font-size: 0.9em !important;
+      }
+
+      button {
+        height: 15px !important;
+
+        img {
+          width: 28px
+        }
+      }
+    }
+
+    .social {
+      border-top: 1px solid color($colors,border);
+
+      ion-col {
+        display: flex;
+        padding-left: 15px;
+        button:not(commentShare){
+          width: 28px;
+          height: 28px !important;
+          margin:0 !important;
+          background-color: transparent;
+        }
+        .commentShare{
+          width:22px;
+          height: 20px;
+        }
+        .love-holder{
+          margin-left: 10px;
+        }
+        .comment-holder{
+          margin-left: 17px;
+          margin-right: 15px;
+        }
+      }
+
+      button {
+        padding: 0px !important;
+        width: auto;
+        height: auto !important;
+        margin-left: 15px;
+      }
+    }
+
+    ion-card-content {
+      padding: 0 !important;
+
+      .link-preview{
+        margin: 5px 0 5px 0;
+        .descriptions{
+          padding: 10px 10px 0 10px;
+          font-size: 14px;
+          .subLink{
+            color: black;
+            font-size: 12px;
+            font-family: lato light;
+          }
+          a{
+            padding: 0;
+            color: #000;
+            text-decoration: none;
+            h4{
+              font-size: 18px;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+      .title {
+        margin-left: 3px;
+      }
+    }
+
+    .interractions {
+      margin-top: 6px;
+      margin-bottom: 14px;
+      margin-left: 7px;
+      color: #424242;
+      font-size: 13px;
+      font-weight: bold;
+      *{
+        color: #424242 !important;
+      }
+    }
+
+
+  }
+
+  .pts {
+    margin-right: 7px;
+    max-width: max-content;
+    height: 14px !important;
+    width: 20px;
+  }
+
+  .left-side {
+    position: absolute;
+    right: 4px;
+  }
+
+  .button-partagez {
+    width: 100%;
+    font-size: 1.3em !important;
+    color: white !important;
+  }
+
+  .commentandicons {
+  }
+
+  ion-textarea, textarea {
+    width: 200px;
+    margin-right: 0px;
+  }
+
+  .categories-emojis img {
+    height: 20px;
+    width: 20px;
+    max-width: inherit;
+  }
+
+  .emoji {
+    height: 20px;
+    width: 20px;
+    display: inline;
+  }
+
+  #avatar {
+    width: 46px;
+  }
+
+  .comment-publish {
+    height: 100% !important;
+    width: auto !important;
+    font-size: 1em !important;
+    position: absolute !important;
+    bottom: 0px;
+    right: 0px !important;
+  }
+
+  button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+
+
+
+  .comment-holder input, .comment-holder textarea, .comment-holder .textarea {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 6px 9px;
+    margin-left: 0px;
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: table-row-group;
+    align-items: center;
+    min-height: 35px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14px;
+    border: solid 1px #ddd !important;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding-right: 125px;
+  }
+
+  .form-comment {
+    height: 60px;
+  }
+
+  .form-comment i {
+    font-size: 18px;
+    color: #999;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  holder .textarea {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 6px 9px;
+    margin-left: 0px;
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: table-row-group;
+    align-items: center;
+    min-height: 35px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14px;
+    border: solid 1px #ddd !important;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding-right: 125px;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .emoji-header {
+    width: 100%;
+    padding: 3px;
+    border-bottom: 1px solid #e1e1e1;
+  }
+
+  .emoji-container {
+    width: 100% !important;
+  }
+
+  .emoji-container {
+    width: 225px;
+    padding: 2px 0 5px;
+  }
+
+  .fa-remove:before, .fa-close:before, .fa-times:before {
+    content: "\f00d";
+    width: 30% !important;
+  }
+
+  .tooltip-emoji {
+    position: relative;
+    display: inline-block;
+  }
+
+  .emoji-categ {
+    display: inline-block;
+    margin-left: 2px;
+    padding: 2px;
+    cursor: pointer;
+  }
+
+  .emoji-container {
+    width: 60px;
+  }
+
+  .emoji-elt {
+    padding: 1px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+  }
+
+  .emoji-hover {
+    position: fixed;
+    bottom: 46px;
+    background-color: #ffffff;
+    z-index: 5;
+    display: block;
+  }
+
+  .fa fa-times close {
+    float: right;
+  }
+  .close_icon {
+    position: absolute;
+    right: 10px;
+    font-size: 1.5em;
+    color: #c3c1c1;
+  }
+  .button-icon{
+    display: inline-block;
+    position: absolute;
+    right: 60px;
+    top: 15px;
+  }
+  ion-col .col {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 6px 9px;
+    margin-left: 0px;
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: table-row-group;
+    align-items: center;
+    min-height: 35px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14px;
+    border: solid 1px #ddd !important;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding-right: 125px;
+  }
+
+  .button-md {
+    width: 36%;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 20px;
+    color: white !important;
+  }
+
+
+  #avatar {
+    width: 46px;
+  }
+
+  ion-card button {
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 0 0 0 0;
+    border: none;
+    color: rgba(255, 255, 255, 0.9);
+    background: #009900;
+    font-size: 14px;
+    display: inline-block;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    border-radius: 4px;
+    text-align: center;
+    text-overflow: clip;
+    letter-spacing: 1px;
+    position: relative;
+    height: 35px;
+    width: 65px;
+  }
+
+
+  .comment {
+    border: solid 1px #ddd !important;
+    min-height: 35px;
+    font-size: 11px;
+    padding: 8px 100px 8px 6px;
+  }
+
+  .comment img {
+    width: 20px;
+    display: inline-flex;
+  }
+
+  .comment[contenteditable=true]:empty:before {
+    color: #b1a9a9;
+    content: attr(placeholder);
+    display: block; /* For Firefox */
+  }
+
+  .comment[placeholder]:empty:focus:before {
+    content: "";
+    height: 18px;
+  }
+
+  .comment-publish {
+    padding: 0 !important;
+    height: 35px !important;
+    top: 5px;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    margin: 0 !important;
+    box-shadow: none;
+    .button-inner{
+      width: fit-content;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }
+
+
+  .profile_img_comment {
+    height: 35px;
+    width: 35px !important;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    left: -6px;
+  }
+
+  .plus-comment {
+    font-size: 14px;
+    color: #666;
+    background-color: #f8f8f8;
+    padding: 10px;
+  }
+
+  .emoji-hover {
+    bottom: 46px !important;
+  }
+}

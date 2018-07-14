@@ -1,0 +1,61 @@
+reaction-modal{
+  .bg{
+    height: 50%;
+    background-color: rgba(0,0,0,0.4) ;
+  }
+  ion-content {
+    position: absolute !important;
+    bottom:0px;
+    top: unset;
+    height: 50%;
+    ion-grid {
+      padding: 7px !important;
+      .modalHeader{
+      border-bottom: 1px solid #cccccc;
+        ion-col {
+          padding: 0px !important;
+          .onLike{
+            border-bottom: 1px solid rgb(42, 170, 42);
+          }
+          .onLove{
+            border-bottom: 1px solid rgb(251, 0, 30);
+          }
+          button {
+            margin: 0 !important;
+            padding: 14px 16px !important;
+            height: auto !important;
+            img {
+              width: 25px;
+            }
+            .nbrInteractions{
+              padding-left: 10px;
+            }
+          }
+        }
+      }
+      .userList{
+        .subscribed{
+          background-color: rgb(204, 204, 204);
+        }
+        ion-item{
+          button{
+            font-size: 14px !important;
+            font-weight: bold;
+            padding: 5px 10px !important;
+            height: 30px !important;
+            box-shadow: none !important;
+          }
+          .userName{
+            font-size: 14px;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+    ion-spinner{
+      margin-top: 7px;
+      position: absolute;
+      right:calc(50% - 14px);
+    }
+  }
+}

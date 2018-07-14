@@ -1,0 +1,8 @@
+<ion-card  padding-top="15px" *ngIf="showGif">
+  <ion-icon name="close" (tap)="onTapClose()"></ion-icon>
+    <ion-slides #slides slidesPerView="3" >
+      <ion-slide  *ngFor="let Url  of UrlGifList">
+            <a (click)="gifPreview(Url)"> <img class="gif-img" [src]="Url"  /></a>
+      </ion-slide>
+  </ion-slides>
+</ion-card>

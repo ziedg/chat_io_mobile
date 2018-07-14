@@ -1,0 +1,66 @@
+<ion-card class="border-t-b"  *ngIf="isValid">
+    <ion-slides #slides slidesPerView="3" >
+
+            <ion-slide *ngFor="let profile of facebookProfiles">
+
+                    <ion-avatar item-start *ngIf="profile.profilePictureMin">
+                            <img class="profileIcon" (click)="onClickProfile(profile)" [src}="profile.profilePictureMin">
+
+                    </ion-avatar>
+
+                    <ion-avatar item-start *ngIf="!profile.profilePictureMin">
+                            <img class="profileIcon" (click)="onClickProfile(profile)" [src}="profile.profilePicture">
+
+                    </ion-avatar>
+
+                    <i class="userName" (click)="onClickProfile()">Kqlifq Kqled</i>
+
+                    <i class="userName top-blagueurs-sub-nbr" (click)="onClickProfile()">2+ {{'subscribers' | translate}}</i>
+
+                    <button  class="publish-button same_home" type="submit" >
+                            {{ "profile_subscribe" | translate }}
+                    </button>
+
+
+            </ion-slide>
+
+    </ion-slides>
+
+
+</ion-card>
+
+
+<!-- <button type="submit" float-left ion-button color="light" class="swiper-button-prev swiper-button-black" (click)="prevSlide()"></button>
+        <button type="submit" ion-button color="light" class="swiper-button-next swiper-button-black" (click)="nextSlide()"></button>   -->
+
+
+<!--
+        <ion-slide style="background-color: blue">
+                <ion-avatar item-start>
+                        <img class="profileIcon" (click)="onClickProfile()">
+
+                </ion-avatar>
+                <i class="userName" (click)="onClickProfile()">Kqlifq Kqled</i>
+
+                <i class="userName top-blagueurs-sub-nbr" (click)="onClickProfile()">2+ {{'subscribers' | translate}}</i>
+                <button  class="publish-button same_home" type="submit" >
+                        {{ 'profile_subscribe' | translate }}
+                </button>
+        </ion-slide>
+
+        <ion-slide style="background-color: red">
+                <ion-avatar item-start>
+                        <img class="profileIcon" (click)="onClickProfile()">
+
+                </ion-avatar>
+                <i class="userName" (click)="onClickProfile()">Kqlifq Kqled</i>
+
+                <i class="userName top-blagueurs-sub-nbr" (click)="onClickProfile()">2+ {{'subscribers' | translate}}</i>
+                <button  class="publish-button same_home" type="submit" >
+                        {{ 'profile_subscribe' | translate }}
+                </button>
+        </ion-slide>
+
+
+
+       -->

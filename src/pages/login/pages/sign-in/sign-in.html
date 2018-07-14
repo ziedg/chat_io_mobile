@@ -1,0 +1,50 @@
+<ion-content  text-center class="bg-light-grey-2" padding-top>
+  <div class="login bg-white border-t-b" padding>
+    <img class="logo-login" src="assets/imgs/logo.png" alt="logo" >
+    <div class="underLogo">{{"login_message" | translate}}</div>
+    <form #f="ngForm" (ngSubmit)="onLogin(f)">
+
+        <div class="bordered">
+          <ion-input type="email"  required  name="email" ngModel placeholder="{{'sign_in_email_placeholder' | translate}}"></ion-input>
+        </div>
+
+        <div class="bordered">
+          <ion-input type="password" required  name="password" ngModel placeholder="{{'sign_in_password_placeholder' | translate }}"></ion-input>
+          <div class="forgot">
+            {{'sign_in_link_forget_password' | translate}}
+          </div>
+        </div>
+
+
+
+          <button ion-button block [disabled]="!f.valid" type="submit" class="login-button">{{"sign_in_button" | translate}}</button>
+
+
+    </form>
+    <p>{{ errorMessage | translate }}</p>
+    <div text-center>
+      <div class="semiSeparator"></div>
+      {{'sign_up_separator' | translate}}
+      <div class="semiSeparator"></div>
+      
+        <form (ngSubmit)="login()" class="fb-form">
+          <button ion-button color="facebook" clear icon-left type="submit">
+            <ion-icon name="logo-facebook"></ion-icon>
+            <p>{{'login_button_facebook_login' | translate }}</p>
+          </button>
+        </form>
+    </div>
+  </div>
+  <div class="signup bg-white border-t-b" padding>
+    <div>{{'login_link_sign_up_text' | translate}}</div>
+    <div [navPush]="inscriptionPage" class="linkBlue">{{'login_link_sign_up' | translate}}</div>
+  </div>
+
+
+    <div class="lanButtons" padding>
+      <button ion-button clear (click)="onChooseLan('en')">English (US)</button>
+      <button ion-button clear (click)="onChooseLan('fr')">Français (France)</button>
+      <button ion-button clear >Español</button>
+    </div>
+
+</ion-content>

@@ -1,0 +1,20 @@
+<!--this page is for modify profile side menu-->
+
+<ion-menu [content]="theContent">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title> Modifier le profil</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+          <button ion-item (click)="onClick('profil')">
+              Modifier mon profil
+            </button>
+        <button ion-item (click)="onClick('password')">
+          Modifier le mot de passe
+        </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-nav [root]="rootPage" #theContent></ion-nav>

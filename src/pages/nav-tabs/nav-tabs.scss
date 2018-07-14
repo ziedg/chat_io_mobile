@@ -1,0 +1,58 @@
+page-nav-tabs {
+  .tabs-ios, .tabs-md, .tabs-wp {
+    .tab-button-icon {
+      background: no-repeat center;
+      height: 22px;
+      width: 22px;
+      background-size: contain;
+      -webkit-background-size: contain;
+      -moz-background-size: contain;
+      -o-background-size: contain;
+      &:before {
+        display: none;
+      }
+    }
+  }
+  .tab-button-text{
+    margin-top:0px !important;
+  }
+  .tabbar{
+    height: 45px;
+    padding-top:5px;
+  }
+  a[aria-selected=false] {
+    .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label="home"] {
+      background-image: url(../assets/images/new/nav-icons/home-icon.png);
+    }
+    .tab-button-icon[ng-reflect-name=search], .tab-button-icon[aria-label="seggestions"] {
+      background-image: url(../assets/images/new/nav-icons/suggestions-icon.png);
+    }
+    .tab-button-icon[ng-reflect-name=messaging], .tab-button-icon[aria-label="messaging"] {
+      background-image: url(../assets/images/new/nav-icons/messaging-icon.png);
+    }
+    .tab-button-icon[ng-reflect-name=notifications], .tab-button-icon[aria-label="notifications"] {
+      background-image: url(../assets/images/new/nav-icons/notifications-icon.png);
+    }
+    .tab-button-icon[ng-reflect-name=profile], .tab-button-icon[aria-label="profile"] {
+      background-image: url(../assets/images/new/nav-icons/profile-icon.png);
+    }
+  }
+
+  a[aria-selected=true] {
+    .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label="home"] {
+      background-image: url(../assets/images/new/nav-icons/home-icon-active.png);
+    }
+    .tab-button-icon[ng-reflect-name=search], .tab-button-icon[aria-label="seggestions"] {
+      content: url(../assets/images/new/nav-icons/suggestions-icon-active.png);
+    }
+    .tab-button-icon[ng-reflect-name=messaging], .tab-button-icon[aria-label="messaging"] {
+      background-image: url(../assets/images/new/nav-icons/messaging-icon-active.png);
+    }
+    .tab-button-icon[ng-reflect-name=notifications], .tab-button-icon[aria-label="notifications"] {
+      background-image: url(../assets/images/new/nav-icons/notifications-icon-active.png);
+    }
+    .tab-button-icon[ng-reflect-name=profile], .tab-button-icon[aria-label="profile"] {
+      background-image: url(../assets/images/new/nav-icons/profile-icon-active.png);
+    }
+  }
+}

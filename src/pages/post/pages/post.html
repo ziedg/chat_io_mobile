@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <ng-template >
+        {{publication.profileFirstName}} {{publication.profileLastName}} post
+      </ng-template>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="bg-light-grey">
+  <post [publication]="publication" *ngIf="publication"></post>
+</ion-content>

@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>modifier-profil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h2 padding text-center>Modifier votre profil</h2>
+  <div class="content">
+    <form class="col-xs-12" [formGroup]="form" #f="ngForm" (ngSubmit)="saveData()">
+      <ion-list text-center>
+        <ion-item>
+          <ion-label stacked>
+            {{ 'update_profile_last_name' | translate }}
+          </ion-label>
+          <ion-input (keyup)="checkLastName()" value="{{user.lastName}}" formControlName="lastName"
+                     [ngClass]="{'invalidInput': (errLastName && errLastName.length>0),
+             'validInput': (errLastName.length==0)}" id="lastName" ></ion-input>
+
+          <p *ngIf="errLastName && errLastName.length>0" class="msgErreur">{{errLastName}}</p>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked placeholder="votre prénom">
+            {{ 'update_profile_first_name' | translate }}
+          </ion-label>
+          <ion-input  (keyup)="checkFirstName()" value="{{user.firstName}}" formControlName="firstName"
+             [ngClass]="{'invalidInput': (errFistName && errFistName.length>0),
+             'validInput': (errFistName.length==0)}" id="firstName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>
+            {{user.about}}
+          </ion-label>
+          <ion-textarea rows=3 id="userDiscrip" style="border-color: #09a012!important" formControlName="userDiscrip" name='userDiscrip'></ion-textarea>
+        </ion-item>
+
+        <button ion-button outline >{{ 'update_profile_button' | translate }}</button>
+
+      </ion-list>
+      </form>
+  </div>
+</ion-content>

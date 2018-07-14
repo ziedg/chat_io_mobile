@@ -1,0 +1,231 @@
+﻿{
+    "cancel" : "Annuler",
+    "login_speegar_description" : "permet de partager vos meilleures blagues et vidéos avec votre entourage",
+    "login_message" : "Connectez vous pour partager vos meilleures blagues et vidéos avec votre entourage",
+    "login_button_facebook_login" : "Se connecter avec Facebook",
+    "login_link_sign_up" : "Inscrivez-vous",
+    "login_link_sign_up_text" : "Vous n’avez pas de compte?",
+    "login_link_sign_in" : "Connectez-vous",
+    "login_link_sign_in_text" : "Vous avez déjà un compte?",
+
+    "footer_about" : "A propos de nous",
+    "footer_cgu" : "Conditions",
+    "footer_team" : "L'equipe",
+    "footer_copyright" : "© 2018 Speegar ",
+
+    "sign_in_email_placeholder" : "Email",
+    "sign_in_password_placeholder" : "Mot de passe",
+    "sign_in_link_forget_password" : "Oublié?",
+    "sign_in_button" : "Se Connecter",
+
+
+  "forget_password_email_placeholder" : "Email",
+  "forget_password_button" : "Envoyer",
+  "forget_password_reset_button" : "cliquez ici",
+  "forget_password_reset_text" : "Si vous n’avez pas reçu d’email,",
+  "forget_password_email_sent" : "Un email vient de vous être envoyé à cette adresse (cela peut prendre 5 minutes). Pour réinitialiser votre mot de passe veuillez cliquer dans cet email et suivre les instructions.",
+
+    "sign_up_first_name_placeholder" : "Prénom",
+    "sign_up_last_name_placeholder" : "Nom",
+    "sign_up_email_placeholder" : "Email",
+    "sign_up_password_placeholder" : "Mot de passe",
+    "sign_up_button" : "S'inscrire",
+    "sign_up_cgu_text" : "En vous inscrivant, vous acceptez nos",
+    "sign_up_cgu_link" : "Conditions d’utilisation",
+    "sign_up_separator" : "Ou",
+
+
+  "reset_password_updated" : "Votre nouveau mot de passe a bien été pris en compte. Vous pouvez vous connecter avec votre nouveau mot de passe.",
+  "reset_password_placeholder" : "Mot de passe",
+  "reset_confirm_password_placeholder" : "Confirmer le mot de passe",
+  "reset_password_button" : "Envoyer",
+
+
+
+  "main_search_placeholder" :"Rechercher",
+  "search_result_no_result" : "Nous n'avons trouvé aucun résultat pour",
+
+  "main_notification_from_two_profiles":"{{first}} et {{second}}",
+  "main_notification_from_many_profiles":"{{first}} et {{number}} autres personnes",
+
+  "main_reagir_notification" :"a réagi à votre publication",
+  "main_reagirs_notification" :"ont réagi  à votre publication",
+  "main_comment_notification" :"a commenté votre publication",
+  "main_comments_notification" :" ont commenté  votre publication",
+  "main_subscribe_notification" :"a commencé à vous suivre",
+  "main_menu_update_profile" :"Modifier le profil",
+  "main_menu_support" :"Support",
+  "main_menu_log_out" :"Deconnexion",
+
+  "profile_options" : "Options du profile",
+  "parameters_update_profile":"Modifier mon profil ",
+  "parameters_update_password":"Modifier mon mot de passe ",
+
+  "main_more_notifications" :"Voir plus",
+  "main_no_notification" :"Pas de notifications",
+
+  "publication_shared_text" : " a partagé la publication de ",
+  "publication_like":"LOL",
+  "publication_dislike": "Nulle",
+  "publication_display_comments": "Afficher les commentaires",
+  "publication_hide_comments": "Masquer les commentaires",
+
+
+  "publication_report": "Signaler",
+  "publication_delete": "Supprimer",
+  "publication_comment_button": "Publier",
+  "publication_comment_placeholder": "Votre commentadire ...",
+  "publication_cancel": "Annuler",
+
+  "publication_emoticon_people": "Personnes",
+  "publication_emoticon_nature": "Nature",
+  "publication_emoticon_objects": "Objets",
+  "publication_display_more_comments": "afficher plus de commentaires",
+
+
+  "publication_popup_cancel_button":"Annuler",
+  "publication_popup_confirmation_title": "Êtes-vous sûr ?",
+  "publication_popup_confirmation_delete_text": "Vous ne serez pas en mesure de récupérer cette publication !",
+  "publication_popup_confirmation_delete_button":  "Oui, supprimez-le!",
+
+
+  "publication_popup_notification_delete_title":  "Supprimée !",
+  "publication_popup_notification_delete_text": "Votre publication a été supprimée.",
+
+  "publication_popup_confirmation_share_text": "Voulez-vous partager cette publication ?",
+  "publication_popup_YES":  "Oui",
+  "publication_popup_NO":  "Non",
+
+  "publication_popup_notification_share_title":  "Paratgée !",
+  "publication_popup_notification_share_text": "Votre publication a été partagée.",
+
+  "publication_popup_report_title": "Signaler cette publication",
+  "publication_popup_report_text": "Que se passe-t-il ?",
+  "publication_popup_confirm":  "Confirmer",
+
+
+  "publication_popup_notification_report_title":  "Signalée !",
+  "publication_popup_notification_report_text": "Cette publication a été Signalée.",
+
+  "prefix_date_yesterday" :"hier",
+  "prefix_date_now" :"1 min",
+  "prefix_date_days" :" jrs",
+  "prefix_date_hours" :" hrs",
+  "prefix_date_minutes" :" mins",
+  "prefix_date_one_hour" :" 1 h",
+
+
+  "home_welcome":"Bienvenue chez Speegar! ",
+  "home_welcome_text_first_part":"Nous voudrions vous remercier pour votre inscription et vous informer que Speegar est un site dédié à vous faire rire! ",
+  "home_welcome_text_second_part":"Depuis votre profil, vous pouvez partager n'importe quelle image ou vidéo pour propager le fou rire!",
+
+  "home_publish_header":"Ajouter une nouvelle publication ",
+  "home_publish_title":"Titre ",
+  "home_publish_placeholder":"Votre blague ici ...",
+  "home_publish_link_loading":"Chargement du lien ... ",
+
+  "home_publish_GIF":"GIF",
+  "home_publish_youtube_placeholder":"youtube.com/watch?v=XXXXXX",
+  "home_publish_visibility_header":"Qui peut voir ça?",
+  "home_publish_visibility_all":"Tout le monde",
+  "home_publish_visibility_subscribers":"Les abonnés",
+  "home_publish_button":"Publier",
+  "home_suggestion_message":"Suivez des comptes pour voir leurs publications dans votre fil.",
+
+
+  "not_found_title_post" : "publication introvable",
+  "not_found_title_profile" : "profile introvable",
+  "not_found_title_page" : "Page introvable",
+  "not_found_post" : "Publication n'existe pas",
+  "not_found_profile" : "Profil n'existe pas",
+  "not_found_page" : "Page n'existe pas ",
+
+
+  "update_password_success" :"Votre mot de passe est modifié avec succes !",
+  "update_password_old_password" :"Ancien mot de passe",
+  "update_password_new_password" :"Nouveau mot de passe ",
+  "update_password_confirm_password" :"Confirmer le nouveau mot de passe",
+  "update_password_button" :"Modifier",
+
+  "update_profile_last_name":"Nom",
+  "update_profile_first_name":"Prénom",
+  "update_profile_description":"Description",
+  "update_profile_facebook_link":"Lien Facebook",
+  "update_profile_youtube_link":"Lien Youtube",
+  "update_profile_twitter_link":"Lien Twitter",
+  "update_profile_button":"Valider",
+
+  "edit_profile_popup_notification_update_title":"Modifié!",
+  "edit_profile_popup_notification_update_text":"Votre profil a été modifié",
+
+
+  "comment_popup_confirmation_delete_title": "Êtes-vous sûr ?",
+  "publication_popup_confirmation_delete_text": "Vous ne serez pas en mesure de récupérer ce commentaire !",
+  "comment_popup_confirmation_delete_button":  "Oui, supprimez-le!",
+  "comment_popup_cancel_delete_button":"Annuler",
+  "comment_popup_notification_delete_title":  "Supprimé !",
+  "comment_popup_notification_delete_text": "Votre commentaire a été supprimé.",
+
+  "profile_update_picture_popup_notification_title":"Photo de profil !",
+  "profile_update_picture_popup_notification_text":"Votre photo de profil a été modifiée",
+
+
+  "profile_already_subscribed" : "Abonné(e)",
+  "profile_subscribe" : "S'abonner",
+  "profile_description_empty" : "Pas de description",
+  "profile_description_button_save" : "Enregistrer",
+  "profile_description__button_cancel" : "Annuler",
+  "profile_menu_followers" : "Abonnés",
+  "profile_menu_followed" : "Suivis",
+  "profile_menu_publications" : "Publications",
+  "profile_label_registration_date" :"Date d'inscription",
+  "profile_menu_update_profile" : "Modifier le profil",
+  "profile_menu_log_out" : "Deconnexion",
+  "profile_menu_cancel" : "Annuler",
+  "profile_menu_bloquer" : "Bloquer",
+  "profile_menu_signaler" : "Signaler",
+
+
+  "popular_profiles_title" : "Profils populaires",
+
+  "profile_suggestions_title" : "Faites des découvertes",
+
+  "SP_FV_ER_EMAIL_EMPTY" : "Saisissez votre Email.",
+  "SP_FV_ER_PASSWORD_EMPTY" : "Saisissez votre mot de passe.",
+  "SP_FV_ER_CONFIRM_PASSWORD_EMPTY" : "Confirmez votre Mot de passe.",
+    "SP_FV_ER_PASSWORDS_NOT_MATCH" : "Les deux mots de passe ne se correspondent pas.",
+    "SP_FV_ER_LAST_NAME_SBN_EMPTY" : "Le nom est obligatoire.",
+    "SP_FV_ER_FIRST_NAME_SBN_EMPTY" : "Le prénom est obligatoire.",
+    "SP_FV_ER_EMAIL_SBN_EMPTY" : "L'email est obligatoire.",
+    "SP_FV_ER_PASSWORD_SBN_EMPTY" : "Le mot de passe est obligatoire.",
+    "SP_FV_ER_EMAIL_NOT_VALID" : "L'email saisi est invalide.",
+    "SP_FV_ER_PASSWORD_SIZE" : "Créez un mot de passe d’au moins 5 caractères.",
+
+  "SP_FV_ER_FB_LINK_NOT_VALID":"Lien facebook erroné",
+  "SP_FV_ER_YOUTUBE_LINK_NOT_VALID":"Lien youtube erroné",
+  "SP_FV_ER_FB_TWITTER_NOT_VALID":"Lien twitter erroné",
+
+
+
+    "SP_FV_ER_NEW_PASSWORD_NOT_VALID" : "Le nouveau mot de passe n'est pas valide",
+
+    "SP_FV_ER_PUBLICATION_EMPTY" : "Votre publication est vide. Veuillez ecrire une publication, partager une photo/GIF ou une video Youtube.",
+
+
+    "SP_ER_PROFILE_NOT_FOUND" : "Profil non trouvé",
+    "SP_ER_TECHNICAL_ERROR" : "Erreur technique",
+    "SP_ER_USER_NOT_FOUND" : "Le nom d’utilisateur entré n’appartient à aucun compte. Veuillez le vérifer et réessayer.",
+    "SP_ER_WRONG_PASSWORD" : "Votre mot de passe est incorrect. Veuillez le vérifer.",
+    "SP_ER_EMAIL_ALREADY_EXISTS" : "Cette adresse mail est déjà utilisé",
+    "SP_ER_FP_USER_NOT_FOUND": "Cette adresse mail n'appartient à aucun compte.",
+    "SP_ER_RESET_LINK_EXPIRED" : "Le lien de renitialisation est expiré.",
+    "SP_ER_EMAIL_NOT_VALID": "Cette adresse mail n'est pas valide",
+
+
+    "publication_open_last_part": "... Lire la suite",
+
+		"top_blagueurs_show_more": "Afficher plus.."
+
+
+
+    }

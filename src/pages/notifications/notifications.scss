@@ -1,0 +1,16 @@
+page-notifications {
+  ion-label {
+    white-space: normal;
+  }
+
+  .notif-profile-names {
+    font-weight: bold;
+  }
+  .notif-unseen{
+    background-color: color($colors,light-grey);
+  }
+
+  .notif-action {
+    text-transform: lowercase;
+  }
+}

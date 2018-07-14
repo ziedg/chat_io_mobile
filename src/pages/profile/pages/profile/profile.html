@@ -1,0 +1,93 @@
+<ion-content class="bg-light-grey">
+  <ion-grid *ngIf="userDisplayed">
+    <div class="profileInfo">
+      <ion-row align-items-center>
+        <ion-col col-4 text-center>
+          <img class="avatar" src="{{ userDisplayed | AvailablePicture }}"
+               alt="profileImg"
+               style="object-fit: cover"
+               (click)="profilepicture()">
+          <div>
+          <i class="fa fa-times" aria-hidden="true" *ngIf="uploadedProfilePicture" [ngStyle]="{left:'0', bottom: 'calc(50% - 18px)'}" (click)="changePhotoCancel()"></i>
+          <i class="fa fa-floppy-o" aria-hidden="true" *ngIf="uploadedProfilePicture" [ngStyle]="{left:'calc(100% - 36px)', bottom: 'calc(50% - 18px)'}" (click)="changePhotoUpload()"></i>
+          <input type="file" id="file-profile" style="display:none" accept="image/*" (change)="updateProfilePicture($event)"></div>
+        </ion-col>
+        <ion-col col-6>
+          <h3>{{userDisplayed.firstName}} {{userDisplayed.lastName}}</h3>
+          <div *ngIf="!isCurrentUser" class="header-button">
+            <button ion-button color="white" *ngIf="userDisplayed.isFollowed"
+                    (click)="onClickUnsubscribe(userDisplayed)">
+              {{'profile_already_subscribed'| translate}}</button>
+
+            <button ion-button *ngIf="!userDisplayed.isFollowed"
+                    (click)="onClickSubscribe(userDisplayed)">
+              {{'profile_subscribe'| translate}}</button>
+
+          </div>
+        </ion-col>
+        <ion-col col-2 text-right>
+          <button ion-button clear (click)="onShowOptionsCurrentuser()" *ngIf="isCurrentUser">
+            <ion-icon name="more" ></ion-icon>
+          </button>
+          <button ion-button clear (click)="onShowOptionsNotCurrentuser()" *ngIf="!isCurrentUser">
+            <ion-icon name="more" ></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+
+  <!-- thinking of adding background color to all components -->
+
+  <ion-grid *ngIf="userDisplayed"
+            class="bg-white border-t-b">
+    <div class="stats">
+      <ion-row text-center>
+        <ion-col col-4>
+          {{ userDisplayed.nbSuivi }}
+          <br>
+          {{ 'profile_menu_followers' | translate }}
+        </ion-col>
+        <ion-col col-4>
+          {{ userDisplayed.nbSubscribers }}
+          <br>
+          {{ 'profile_menu_followed' | translate }}
+        </ion-col>
+        <ion-col col-4>
+          {{ userDisplayed.nbPublications }}
+          <br>
+          {{ 'profile_menu_publications' | translate }}
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+  <hr class="hr-sep">
+
+
+  <post *ngFor="let publication of publicationBeanList"
+        [publication]=publication
+        (notifyDeletePost)="deletePost($event)" ></post>
+  <ion-infinite-scroll (ionInfinite)="onLoadMorePosts($event)" *ngIf="loadMore">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."> </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <div class="container bg-white border-t-b" >
+    <ion-grid *ngIf="userDisplayed"
+              text-center>
+      <ion-row>
+        <ion-col>
+          <h1>{{ 'profile_label_registration_date' | translate }}</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col >
+          <h3><ion-icon name="ios-calendar-outline"> {{userDisplayed.dateInscription}} </ion-icon></h3>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>
+
+
+

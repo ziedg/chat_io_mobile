@@ -1,0 +1,203 @@
+<ion-header class="border-t-b" [scrollHide]="headerScrollConfig" [scrollContent]="pageContent">
+
+  <ion-navbar>
+    <img src="assets/imgs/logo.png" class="logo-navBar">
+
+    <!--<ion-searchbar placeholder="{{ 'main_search_placeholder' | translate }}"
+                   [(ngModel)]="terms"
+                   (ngModelChange)="onChange($event)"
+                   (focus)="checkAutoComplete()"
+                    *ngIf="showSearch"
+                    showCancelButton="true"
+    (ionCancel)="showSearch=false">
+
+    </ion-searchbar>-->
+    <button class="searchIcon" ion-button clear *ngIf="!showSearch" (tap)="onClickSearch()">
+      <ion-icon name="search"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content #pageContent fullscreen class="bg-light-grey" [scrollHide]="headerScrollConfig"
+             [scrollContent]="pageContent">
+
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="welcome" *ngIf="welcomeMsgIsShown">
+    <ion-card>
+      <ion-card-header>
+        <h3>{{ 'home_welcome' | translate }}</h3>
+      </ion-card-header>
+      <ion-card-content>
+        {{ 'home_welcome_text_first_part' | translate }}
+        <br> {{ 'home_welcome_text_second_part' | translate }}
+        <i class="fa fa-times" aria-hidden="true" (click)="closeWelcomeMsg()"></i>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+
+  <form (ngSubmit)="publish(publishDivRef)" [formGroup]="form">
+
+    <ion-card class="border-t-b">
+      <ion-card-header>
+        <ion-item class="newPubHeader">
+          <ion-title item-start small>{{ 'home_publish_header' | translate }}</ion-title>
+          <!--<ion-label>{{ 'home_publish_title' | translate }}</ion-label>
+          <ion-checkbox [checked]="titleEnable" (click)="enableTitlePost()"></ion-checkbox>-->
+        </ion-item>
+
+        <!--<ion-item *ngIf="titleEnable">
+          <ion-input placeholder="{{ 'home_publish_title' | translate }}"  formControlName="publicationTitle"></ion-input>
+        </ion-item>-->
+
+        <ion-item class="newPubContent">
+          <ion-avatar item-start>
+            <div class="profileIconNewPub"
+                 [ngStyle]="{'background-image': 'url(' + user.profilePicture + ')'}">
+            </div>
+          </ion-avatar>
+          <div id="publishDiv"
+               [ngClass]="{'m-t-12px': titleEnable, 'textarea-publish': true, 'arabic-text': arabicText}"
+               (paste)="updatePublishTextOnPaste($event)"
+               contenteditable="true" data-text="Votre blague ici.." (keyup)="checkArabic(publishDivRef.textContent[0])"
+               #publishDivRef style="width: calc(100% - 80px)"
+          ></div>
+
+        </ion-item>
+      </ion-card-header>
+
+        <div class="file-input-holder">
+          <div class="file-input">
+            <div class="ajout-img-holder">
+              <i class="fa fa-times delete-photo-post" *ngIf="uploadedPicture || imageFromLink" aria-hidden="true"
+                 (click)="resetPublishPicture()"></i>
+              <img id="preview-image">
+            </div>
+          </div>
+
+        </div>
+        <div class="link-preview-loading" *ngIf="linkLoading">
+          {{ 'home_publish_link_loading' | translate }}
+        </div>
+        <div class="link-preview" *ngIf="link.isSet">
+                <span>
+                  <i class="fa fa-times" aria-hidden="true" (click)="closeLinkAPI()"></i>
+                </span>
+
+                <div class="noPadding" *ngIf="link.isGif">
+                  <img class="img-preview" [src]="link.url"/>
+                </div>
+
+                <div class="noPadding" *ngIf="link.url && !link.isGif">
+                  <img class="img-preview" [src]="link.image"/>
+                </div>
+                <div class="descriptions" *ngIf="!link.isGif">
+                  <a href="{{link.url}}" target="_blank">
+              <h4>{{link.title}}</h4>
+            </a>
+
+            <p>{{link.description}}</p>
+            <b>{{linkDomain}}</b>
+
+          </div>
+        </div>
+
+        <div class="facebook-preview">
+
+        </div>
+        <div class="youtube-preview">
+
+        </div>
+
+        <gif-slider style="width:100%;"  *ngIf="showGifSlider" (myEvent)="previewGIF($event)"
+                    (onClose)="closeGif($event)"></gif-slider>
+
+      <ion-row class="social-row" align-items-center>
+
+        <ion-col class="add_buttons" col-6>
+          <button ion-button icon-start clear (click)="addPhoto()" type="button">
+            <i class="fa fa-picture-o" aria-hidden="true"></i>
+          </button>
+
+          <button ion-button icon-start clear type="button">
+            <i class="fa fa-globe" style="vertical-align: middle" [class.hide]="selectedMenuElement!=0"
+               (click)="changeSelectMenu(1)"></i>
+            <i class="fa fa-users" style="vertical-align: middle" [class.hide]="selectedMenuElement!=1"
+               (click)="changeSelectMenu(0)"></i>
+          </button>
+          <!-- <button ion-button icon-start clear (click)="toggleShowGifSlider()" type="button">
+            <ion-icon name="image"></ion-icon>
+          </button> -->
+
+          <button ion-button icon-start clear (click)="toggleGifSlider()" type="button">
+            <b class="gif-btn">{{ 'home_publish_GIF' | translate }}</b>
+          </button>
+        </ion-col>
+
+        <ion-col offset-2>
+          <button class="publish-button same_home" type="submit">
+            {{ 'home_publish_button' | translate }}
+          </button>
+
+        </ion-col>
+        <input type="file" id="file-image" style="display:none" accept="image/*" (change)="uploadPhoto($event)">
+        <input type="file" id="file-image-gif" style="display:none" accept=".gif" (change)="uploadPhotoGIF($event)">
+      </ion-row>
+
+    </ion-card>
+
+
+  </form>
+
+       <!-- <page-facebook-friends>
+
+       </page-facebook-friends> -->
+
+  <div>
+    <page-facebook-friends></page-facebook-friends>
+    <div style="color:transparent">facebook</div>
+  </div>
+
+
+
+<div *ngFor="let publication of publicationBeanList; let i= index">
+    <post
+    [publication]=publication
+    (notifyDeletePost)="deletePost($event)"></post>
+
+    <div *ngIf="i == 2">
+        <page-facebook-friends></page-facebook-friends>
+        <div style="color:transparent">facebook suggestions</div>
+      </div>
+</div>
+
+
+  <ion-infinite-scroll (ionInfinite)="onLoadMorePosts($event)" *ngIf="morePosts">
+    <div class="publications-holder bg-white bordered" id="publication">
+      <article class="publication ">
+
+        <div class="user" style="display: flex;">
+          <div class="profileIconNewPub bgAnimated" >
+          </div>
+          <div class="user-name bgAnimated" style="width:40%;height:10px;margin-left: 10px;">
+          </div>
+
+        </div>
+        <div class="content" style="margin-left: 35px;">
+          <h4 class="bgAnimated" style="width:40%;height:10px;"></h4>
+          <h4 class="bgAnimated" style="width:55%;height:10px;"></h4>
+          <h4 class="bgAnimated" style="width:65%;height:10px;"></h4>
+
+        </div>
+      </article>
+    </div>
+  </ion-infinite-scroll>
+
+
+</ion-content>

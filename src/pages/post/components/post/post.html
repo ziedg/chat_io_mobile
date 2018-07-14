@@ -1,0 +1,288 @@
+<ion-card class="border-t-b">
+  <ion-item class="user">
+    <ion-avatar item-start>
+      <img *ngIf="publication"
+           class="profileIcon"
+           src="{{ publication | AvailablePicture}}"
+           (click)="onClickProfile()">
+    </ion-avatar>
+    <i class="userName" (click)="onClickProfile()">{{publication.profileFirstName}} {{publication.profileLastName}}</i>
+    <span *ngIf="publication.isShared">
+      <p>{{"publication_shared_text" | translate}}</p>
+      <i class="userName" (click)="onClickProfileShare()">{{publication.originalProfileFirstName}} {{publication.originalProfileLastName}}</i>
+    </span>
+    <div class="data">
+      <ion-icon class="users" name="contacts" *ngIf="publication.confidentiality=='PRIVATE'"></ion-icon>
+      <ion-icon class="global" name="md-globe" *ngIf="publication.confidentiality=='PUBLIC'"></ion-icon>
+      <span class="date" (click)="onViewPost()">{{getPostTime(publication.datePublication)}}</span>
+    </div>
+  </ion-item>
+  <ion-card-content>
+    <div>
+      <div *ngIf="publication.publTitle != 'null'"
+           class="title">
+        <h2>
+          {{publication.publTitle}}
+        </h2>
+      </div>
+
+      <div *ngIf=publication.publText style="margin-left: 5px;" (press)="onViewOptions()">
+        <span [innerHTML]="firstPubText"></span>
+        <a *ngIf="longPubText && !longPubTextShow"
+           (click)="longPub()"
+           style="margin-top: 0; display: inline">
+          {{"publication_open_last_part" | translate }}</a>
+        <span *ngIf="longPubText && longPubTextShow" [innerHTML]="lastPubText">
+            </span>
+      </div>
+      <div *ngIf=isImg (press)="onViewOptions()">
+        <img class="postContent" src="{{publicationUrl}}" alt="">
+      </div>
+      <!--
+      <div *ngIf="publication.publExternalLink">
+        <img class="postContent" src="{{link.image}}" alt="">
+      </div>-->
+
+      <div class="link-preview" *ngIf="link.isSet" >
+        <div class="noPadding" *ngIf="link.image">
+          <a href="{{link.url}}" target="_blank" style="width:100%">
+            <img class="img-preview" [src]="link.image" (click)="preventLink($event, link.isGif)"/>
+          </a>
+        </div>
+        <div class="descriptions" *ngIf="!link.isGif">
+          <a href="{{link.url}}" target="_blank">
+            <h4>{{link.title}}</h4>
+          </a>
+          <p>{{link.description}}</p>
+          <a href="{{link.url}}" target="_blank" class="subLink">{{link.url}}</a>
+        </div>
+      </div>
+
+      <div *ngIf="isYoutube">
+        <iframe width="100%" height="215" [src]="url" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div *ngIf="isFb">
+        <iframe width="100%" height="215" [src]="url" frameborder="0" allowfullscreen ></iframe>
+
+      </div>
+
+    </div>
+  </ion-card-content>
+  <ion-row>
+    <div class="interractions" *ngIf="!((publication.nbLikes + publication.nbDislikes)==0 && nbComments ==0)">
+    <span *ngIf="publication.nbLikes+publication.nbDislikes != 0">
+        <span (click)="openModalInteractions()">
+          {{shortNumber(publication.nbLikes+publication.nbDislikes)}} {{ 'interactions' | translate }}</span>
+      </span>
+
+    <span *ngIf="publication.nbLikes+publication.nbDislikes != 0 && nbComments != 0"> • </span>
+    <span *ngIf="nbComments != 0">
+        <span (click)="displayComments()">
+          {{shortNumber(nbComments)}} {{ 'commentaires' | translate }}</span>
+      </span>
+    </div>
+  </ion-row>
+
+  <ion-row class="social" justify-content-center>
+    <ion-col>
+      <div class="like-holder">
+        <like-reaction [checked]="publication.isLiked" (click)="addOrRemoveLike()" style="display:block; width: 28px; height: 28px;"></like-reaction>
+      </div>
+
+      <div class="love-holder">
+        <love-reaction [checked]="publication.isDisliked" (click)="addOrRemoveDislike()" style="display:block; width: 28px; height: 28px;"></love-reaction>
+      </div>
+
+      <div class="comment-holder">
+        <div *ngIf="!commentsDisplayed" >
+          <button ion-button icon-start clear small (click)="displayComments()" >
+            <img src="assets/imgs/post/comment.png" class="commentShare" alt="comment">
+          </button>
+        </div>
+        <div *ngIf="commentsDisplayed">
+          <button ion-button icon-start clear small (click)="displayComments()" >
+            <img src="assets/imgs/post/comment-active.png" class="commentShare" alt="comment">
+          </button>
+        </div>
+      </div>
+      <div>
+        <button ion-button icon-start clear small (click)="sharePub(publication)" >
+          <img src="assets/imgs/post/share.png" alt="share" class="commentShare">
+        </button>
+      </div>
+
+      <div class="left-side">
+        <button ion-button icon-start clear small (click)="onViewOptions()">
+          <img src="assets/imgs/post/3-pts.png" alt="options" class="pts">
+        </button>
+      </div>
+
+    </ion-col>
+  </ion-row>
+  <!-- nv comment-->
+  <div [class.comment-with-picture]="uploadedPictureComment">
+    <div *ngIf="commentsDisplayed" class="comment-holder form-comment">
+      <div class="user-img for-comment" *ngIf="user.profilePictureMin"
+           [ngStyle]="{'background-image': 'url(' + user.profilePictureMin + ')'}"></div>
+
+      <div class="user-img for-comment" *ngIf="!user.profilePictureMin"
+           [ngStyle]="{'background-image': 'url(' + user.profilePicture + ')'}"></div>
+
+      <form (ngSubmit)="publishComment()" [formGroup]="formComment" #f="ngForm">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-1>
+              <div id="avatar" class="profile_img_comment"
+                   [ngStyle]="{'background-image': 'url(' + user.profilePicture + ')'}"></div>
+              <!--<img id="avatar" src="../../../../assets/avatars/clown1_min.png" alt="avatar" />-->
+            </ion-col>
+            <ion-col>
+              <textarea placeholder="Votre commentaire ..."
+                        formControlName="pubComment"
+                        style="display:none "
+                        [(ngModel)]="commentText"></textarea>
+              <textarea placeholder="Votre commentaire ..."
+                        formControlName="commentText"
+                        style="display:none"></textarea>
+              <input type="file" class="{{pubImgId}}" style="display:none" accept="image/*" (change)="uploadPhoto($event)">
+              <div class="comment" contenteditable="true"
+                   id="{{commentTextareaId}}"
+                   placeholder="Votre commentaire ..."
+                   [(contenteditableModel)]="commentInputHtml"
+                   (keydown.Enter)="publishComment()">
+                  </div>
+              <div>
+                <div class="button-icon">
+              <i class="fa fa-camera" (click)="addPhoto()"></i>
+              <i class="fa fa-smile-o toggleEmoji" (click)="toggleEmoji()"></i>
+                </div>
+              <button ion-button class="comment-publish publish-button same_home" type="submit" (click)="closeModalEmoji()" *ngIf="!loadingComment">
+                {{ 'publication_comment_button' | translate }}
+              </button>
+              <button ion-button class="comment-publish comment-loading" *ngIf="loadingComment" disabled>
+                <div class="loading"></div>
+              </button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+
+
+
+
+        <div class="form-more" >
+
+          <div class="emoji-hover" id="{{emojiHoverId}}" *ngIf="emoji">
+
+            <div class="emoji-header">
+
+              <div class="emoji-categ tooltip-emoji" id="ppl" (click)="changeEmojiTab(0)">
+                <img class="emoji" src="assets/images/basic/smiley.png" />
+                <span class="tooltiptext">
+
+                          <div class="arrow-tooltip"></div>
+                        </span>
+              </div>
+
+              <ion-col col-1>
+                <div class="emoji-categ tooltip-emoji" id="ntr" (click)="changeEmojiTab(1)">
+                  <img class="emoji" src="assets/images/basic/evergreen_tree.png" />
+                  <span class="tooltiptext">
+
+                          <div class="arrow-tooltip"></div>
+                        </span>
+                </div>
+              </ion-col>
+              <ion-col col-1>
+                <div class="emoji-categ tooltip-emoji" id="objcts" (click)="changeEmojiTab(2)">
+                  <img class="emoji" src="assets/images/basic/radio.png" /><span class="tooltiptext">
+
+                          <div class="arrow-tooltip"></div>
+                        </span>
+                </div>
+              </ion-col>
+              <ion-col col-1 class="close_icon">
+                <i class="fa fa-times close" aria-hidden="true" (click)="closeModalEmoji()"></i>
+              </ion-col>
+
+            </div>
+
+
+            <div class="emoji-container" id="ppl-container" *ngIf="selectedEmojiTab==0">
+              <div *ngFor="let emoji of listEmoji[0].list"
+                   (click)="addToComment(emoji)" class="emoji-elt">
+                <img src="assets/images/basic/{{emoji.imageName}}.png" />
+              </div>
+            </div>
+            <div class="emoji-container" id="ntr-container" *ngIf="selectedEmojiTab==1">
+              <div *ngFor="let emoji of listEmoji[1].list" (click)="addToComment(emoji)"
+                   class="emoji-elt">
+                <img src="assets/images/basic/{{emoji.imageName}}.png" />
+              </div>
+
+            </div>
+            <div class="emoji-container" id="objcts-container" *ngIf="selectedEmojiTab==2">
+              <div *ngFor="let emoji of listEmoji[2].list" (click)="addToComment(emoji)"
+                   class="emoji-elt">
+                <img src="assets/images/basic/{{emoji.imageName}}.png" />
+              </div>
+            </div>
+
+
+
+
+          </div>
+
+
+          <!--
+          <ion-grid *ngIf="commentsDisplayed">
+            <ion-row>
+              <ion-col col-1>
+                <img id="avatar" src="../../../../assets/avatars/clown1_min.png" alt="avatar" />
+              </ion-col>
+
+              <ion-col col-8 >
+                <div class="commentandicons">
+                  <ion-textarea   placeholder="votre commentaire ici">
+                  </ion-textarea>
+                  <ion-icon name="happy"></ion-icon>
+                  <ion-icon name="camera"></ion-icon>
+                </div>
+              </ion-col>
+
+              <ion-col col-3>
+                <button class="publish-button" ion-button >Partagez</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+    -->
+
+        </div>
+      </form>
+      <div *ngIf="uploadedPictureComment" class="upload-comment-picture-cont">
+        <img class="upload-comment-picture" id="{{pubImgId}}" />
+        <i class="fa fa-times delete-photo-comment cancel-upload-comment-picture" aria-hidden="true"
+           *ngIf="uploadedPictureComment" (click)="resetCommentPicture()" style="top:-2px; right: -12px;"></i>
+      </div>
+    </div>
+
+    <!--comments-->
+    <div class="comments-holder" *ngIf="commentsDisplayed">
+      <comment *ngFor="let commentBean of listComments" [commentBean]="commentBean"
+               [publicationBean]="publication"
+               (nbDisplayedCommentsChange)="deleteCommentNb($event)">
+      </comment>
+      <div *ngIf="afficheMoreComments"
+           class="comment-holder plus-comment"
+           (click)="loadMoreComments(0)"
+            text-center>
+        <div class="margin-auto">
+          {{ 'publication_display_more_comments' | translate }}
+          <i class="fa fa-caret-down"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-card>

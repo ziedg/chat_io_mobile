@@ -1,0 +1,40 @@
+gif-slider {
+
+    ion-card {
+      background-color: white !important;
+      margin: 0 0 8px !important;
+      width: 100% !important;
+      position: relative;
+      ion-icon{
+        position: absolute;
+        right: 5px;
+        top: 0;
+      }
+    }
+      ion-slides {
+        ion-slide{
+          width: 100px !important;
+          height: 60px !important;
+        }
+
+      }
+      .gif-img {
+        width: 100%;
+        height: 100%;
+      }
+      .slide-zoom{
+        height: 60px !important;
+      }
+      ion-slide {
+        // background-color: transparent !important;
+        margin-top: 5px;
+        margin-left: 5px;
+        // margin-right: 5px;
+        //height: 137px;
+
+
+      }
+
+
+
+}

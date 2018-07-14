@@ -1,0 +1,36 @@
+
+
+<ion-content class="bg-light-grey" padding-top >
+
+  <ion-spinner   name="circles" *ngIf="!loadCompleted"></ion-spinner>
+
+  <ion-list class="border-t-b" no-lines *ngIf="loadCompleted">
+    <ion-item *ngFor="let user of popularProfiles"
+              [navPush]="profilePage"
+              [navParams]="{ userId: user._id }">
+      <ion-avatar item-start>
+        <img *ngIf="user" src="{{user | AvailablePicture}}">
+      </ion-avatar>
+
+      <h6 class="user-name">
+        {{user.firstName}} {{user.lastName}}
+      </h6>
+      <p class="nb-subscribers"> {{user.nbSubscribers}} abonnés </p>
+
+      <button class="subscribe-btn"
+              (click)="subscribeClick($event, user)"
+              ion-button
+              item-end>
+        {{ "profile_subscribe" | translate }}
+      </button>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="onScroll($event)" >
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+
+
+

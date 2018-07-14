@@ -1,0 +1,23 @@
+page-login {
+  height: max-content;
+
+  form{
+    div:not(.forgot){
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .forgot{
+      position:absolute;
+      right: 10px;
+      top: 10px;
+      color: #003569;
+    }
+  }
+  .signup{
+    margin-top: 10px;
+
+  }
+
+
+
+}

@@ -1,0 +1,7 @@
+<ion-tabs #myTabs selectedIndex="0"  (ionChange)="tabSelected()" >
+    <ion-tab [root]="Root" tabTitle="home" tabIcon="home" tabsHideOnSubPages="false"></ion-tab>
+    <ion-tab [root]="suggestionsPage" tabTitle="suggestions" tabIcon="seggestions"></ion-tab>
+    <ion-tab [root]="suggestionsPage" tabTitle="discussion" tabIcon="messaging"></ion-tab>
+    <ion-tab [root]="notificationsPage" tabTitle="notifications" tabIcon="notifications" tabBadge="{{nbNewNotifications>0 ? nbNewNotifications : null}}"></ion-tab>
+    <ion-tab [root]="profilePage" tabTitle="profile" tabIcon="profile"></ion-tab>
+</ion-tabs>

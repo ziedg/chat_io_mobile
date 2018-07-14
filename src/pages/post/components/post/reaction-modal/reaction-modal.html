@@ -1,0 +1,48 @@
+<div class="bg">
+
+</div>
+
+<ion-content class="border-t">
+  <ion-spinner name="ios" *ngIf="!interactionsLoaded"></ion-spinner>
+  <ion-grid *ngIf="interactionsLoaded">
+    <ion-row class="modalHeader">
+      <ion-col >
+        <button ion-button clear [class.onLike]="onLike" (click)="onViewListInterractions('like')"  *ngIf="InteractionsLikes.length>0">
+          <img src="assets/imgs/post/like-active.png" alt="like-icon">
+          <span class="nbrInteractions">{{InteractionsLikes.length}}</span>
+        </button>
+        <button ion-button clear [class.onLove]="onLove" (click)="onViewListInterractions('love')" *ngIf="InteractionsDislikes.length>0">
+          <img src="assets/imgs/post/heart-active.png" alt="heart-icon">
+          <span class="nbrInteractions">{{InteractionsDislikes.length}}</span>
+        </button>
+        <button ion-button clear color="dark" class="interactions-tablinks" style="float:right" (click)="onDismissModal()">
+          &#10006;
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="userList">
+      <ion-col>
+
+          <ion-item *ngFor="let user of interactionList"  no-lines>
+            <ion-avatar item-start>
+              <img class="profileIcon"
+                   src="{{ user.profilepicture}}">
+            </ion-avatar>
+            <span class="userName">{{user.profilefirstname}} {{user.profilelastname}}</span>
+            <button (click)="toggleSubscribe(user)" ion-button item-end
+                    *ngIf="user.isSubscribed === 'false' && user.userId !== profileId">
+              {{ 'profile_subscribe' | translate }}
+            </button>
+            <button (click)="toggleSubscribe(user)" ion-button class="subscribed" item-end
+                    *ngIf="user.isSubscribed === 'true' && user.userId !== profileId">
+              {{'profile_already_subscribed' | translate }}
+            </button>
+          </ion-item>
+
+
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

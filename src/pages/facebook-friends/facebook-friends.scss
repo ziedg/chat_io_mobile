@@ -1,0 +1,63 @@
+page-facebook-friends {
+  ion-card {
+    height: 150px;
+    background-color: white !important;
+    margin: 0 0 8px !important;
+    width: 100% !important;
+            
+            
+            
+    
+  }
+
+  .profileIcon {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+  }
+  p{
+    color: #333 !important;
+  }
+  ion-slide {
+    // background-color: transparent !important;
+    margin-top: 5px;
+    margin-left: 5px;
+    // margin-right: 5px;
+    height: 137px;
+        
+    .userName {
+      font-weight: 500;
+      font-style: unset;
+      font-size: 10px;
+    }
+    ion-avatar{
+      margin-left: 38px !important;
+    }
+  }
+  .publish-button{
+    box-sizing: content-box;
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 0 0 0 0;
+    border: none;
+    color: rgba(255,255,255,0.9);
+    background: #009900;
+    font-size: 14px;
+    display: inline-block;
+    justify-content: flex-end;
+    border-radius: 4px;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    letter-spacing: 1px;
+    position: relative;
+    right: -10px;
+
+    height: 30px;
+    width: 65px;
+  }
+  
+
+}

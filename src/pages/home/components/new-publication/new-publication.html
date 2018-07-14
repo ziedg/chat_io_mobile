@@ -1,0 +1,102 @@
+
+<form (ngSubmit)="publish()" [formGroup]="form">
+
+  <ion-card class="border-t-b">
+    <ion-card-header>
+      <ion-item class="newPubHeader">
+        <ion-title item-start small>{{ 'home_publish_header' | translate }}</ion-title>
+        <!--<ion-label>{{ 'home_publish_title' | translate }}</ion-label>
+        <ion-checkbox [checked]="titleEnable" (click)="enableTitlePost()"></ion-checkbox>-->
+      </ion-item>
+
+      <!--<ion-item *ngIf="titleEnable">
+        <ion-input placeholder="{{ 'home_publish_title' | translate }}"  formControlName="publicationTitle"></ion-input>
+      </ion-item>-->
+
+      <ion-item class="newPubContent">
+        <ion-avatar item-start>
+          <div class="profileIconNewPub"
+               [ngStyle]="{'background-image': 'url(' + user.profilePicture + ')'}"
+          >
+          </div>
+        </ion-avatar>
+
+        <div id="publishDiv" [ngClass]="{'m-t-12px': titleEnable, 'textarea-publish': true, 'arabic-text': arabicText}" (paste)="updatePublishTextOnPaste($event)"
+             contenteditable="true" data-text="Votre blague ici.." (keyup)="checkArabic(publishDivRef.textContent[0])" #publishDivRef style="width: calc(100% - 80px)"
+        ></div>
+
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content  >
+      <div class="file-input-holder">
+        <div class="file-input">
+          <div class="ajout-img-holder">
+            <i class="fa fa-times delete-photo-post" *ngIf="uploadedPicture || imageFromLink" aria-hidden="true"  (click)="resetPublishPicture()"></i>
+            <img id="preview-image">
+          </div>
+        </div>
+
+      </div>
+      <div class="link-preview-loading" *ngIf="linkLoading">
+        {{ 'home_publish_link_loading' | translate }}
+      </div>
+      <div class="link-preview" *ngIf="link.isSet">
+              <span>
+                <i class="fa fa-times" aria-hidden="true" (click)="closeLinkAPI()"></i>
+              </span>
+
+        <div class="noPadding" *ngIf="link.image">
+          <img class="img-preview" [src]="link.image" />
+        </div>
+        <div class="descriptions" *ngIf="!link.isGif">
+          <a href="{{link.url}}" target="_blank">
+            <h4>{{link.title}}</h4>
+          </a>
+
+          <p>{{link.description}}</p>
+          <b>{{linkDomain}}</b>
+
+        </div>
+      </div>
+
+      <div class="facebook-preview">
+
+      </div>
+      <div class="youtube-preview">
+
+      </div>
+
+      
+
+
+
+
+    </ion-card-content>
+    <ion-row class="social-row" align-items-center>
+
+      <ion-col class="add_buttons">
+        <button ion-button icon-start clear (click)="addPhoto()" type="button">
+          <i class="fa fa-picture-o" aria-hidden="true"></i>
+        </button>
+
+        <button ion-button icon-start clear type="button">
+          <i class="fa fa-globe" style="vertical-align: middle" [class.hide]="selectedMenuElement!=0" (click)="changeSelectMenu(1)"></i>
+          <i class="fa fa-users" style="vertical-align: middle" [class.hide]="selectedMenuElement!=1" (click)="changeSelectMenu(0)"></i>
+        </button>
+      </ion-col>
+
+      <ion-col offset-5>
+        <button  class="publish-button same_home" type="submit" >
+          {{ 'home_publish_button' | translate }}
+        </button>
+
+      </ion-col>
+      <input type="file" id="file-image" style="display:none" accept="image/*" (change)="uploadPhoto($event)">
+      <input type="file" id="file-image-gif" style="display:none" accept=".gif" (change)="uploadPhotoGIF($event)">
+    </ion-row>
+
+  </ion-card>
+
+
+</form>

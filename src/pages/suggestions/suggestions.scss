@@ -1,0 +1,32 @@
+page-suggestions {
+
+  .list-ios > .item-block,
+  .item-block .item-inner {
+    border-color: color($colors, border)!important;
+  }
+
+  .user-name {
+    font-weight: bold;
+  }
+
+  .nb-subscribers {
+    font-weight: bold;
+    font-size: 11px;
+  }
+
+  .subscribe-btn .button-inner {
+    font-size: 14px;
+    font-weight: bold;
+    height: 30px;
+    width: 64px;
+  }
+
+  .item-button {
+    height: 30px!important;
+    padding: 0 10px!important
+  }
+  ion-spinner{
+    position: absolute;
+    right:calc(50% - 14px);
+  }
+}

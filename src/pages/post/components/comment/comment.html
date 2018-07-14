@@ -1,0 +1,82 @@
+<!-- comments -->
+
+<div class="comment-holder" *ngIf="!commentBean.deleted">
+
+  <img *ngIf="commentBean"
+       class="user-img for-comment radiused-img"
+       src="{{ commentBean | AvailablePicture}}">
+
+
+  <div class="comment-content">
+    <ion-grid>
+      <div class=" name-and-text-comment">
+        <ion-row>
+          <ion-col col-xs col-12 class="commenter-name " (click)="Profil(commentBean.profileId)">
+            {{commentBean.profileFirstName}} {{commentBean.profileLastName}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-xs col-12 class=" comment-text"
+                   [innerHTML]="afficheComment(commentBean.commentText)"
+                   style="margin-bottom: 5px; !important;">
+          </ion-col>
+
+
+          <img *ngIf="commentBean.commentPicture"
+               src="{{imageBaseUrl + commentBean.commentPicture}}"
+               class="display-comment-picture" />
+
+        </ion-row>
+      </div>
+    </ion-grid>
+    <div class="like-comment  ">
+
+      <div class="like-dislike">
+        <ion-grid>
+          <ion-row >
+            <ion-col>
+              <div class="like-holder"
+                   (click)="addOrRemoveLike()"
+                   [class.active]="commentBean.isLiked">
+
+                <button class="like same_home">
+                  <i class="fa fa-thumbs-up"
+                     aria-hidden="true" [class.active]="commentBean.isLiked"></i>
+                </button>
+                <span class="nbr">{{commentBean.nbLikes}}</span>
+              </div>
+
+              <div class="dislike-holder"  (click)="addOrRemoveDislike()"
+                   [class.active]="commentBean.isDisliked">
+                <button class="dislike same_home">
+                  <i class="fa fa-thumbs-down"
+                     aria-hidden="true" [class.active]="commentBean.isDisliked"></i>
+                </button>
+                <span class="nbr">
+                  {{commentBean.nbDislikes}}
+                </span>
+              </div>
+
+            <div *ngIf="commentBean.profileId == user._id || publicationBean.profileId == user._id">
+              <div class="dislike-holder"
+                   (click)="removeComment(commentBean)"
+                   >
+                <button class="same_home">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </div>
+            </div>
+              <div class="date_comment" >
+                <i class="fa fa-clock-o date_comment"></i>
+                <span  > {{getCommentTime(commentBean.dateComment)}} </span>
+              </div>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+
+  </div>
+</div>

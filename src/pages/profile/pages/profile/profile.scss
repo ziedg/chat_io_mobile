@@ -1,0 +1,25 @@
+page-profile {
+  .avatar {
+    height: 90px;
+    width: 90px;
+    border-radius: 100%;
+    border: 4px solid white;
+  }
+
+  .profileInfo ion-icon[name="more"] {
+    font-size: 2.4em;
+    color: black;
+  }
+
+  .hr-sep {
+    margin: 20px 0;
+    color: #ffffff;
+  }
+  .header-button{
+    button {
+      box-shadow: unset ;
+    }
+  }
+
+
+}

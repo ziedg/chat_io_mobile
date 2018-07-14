@@ -1,0 +1,27 @@
+<!-- this page contains the tabs of the support 
+
+-->
+
+
+  <ion-menu [content]="theContent">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title> Support</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+          <button ion-item (click)="onClick('aPropos')">
+              A propos de nous
+            </button>
+        <button ion-item (click)="onClick('equipe')">
+          Equipe
+        </button>
+        <button ion-item (click)="onClick('cgu')">
+            Conditions générales d'utilisation
+        </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+<ion-nav #theContent [root]=rootPage></ion-nav>

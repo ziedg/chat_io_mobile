@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-searchbar placeholder="{{ 'main_search_placeholder' | translate }}"
+                   [(ngModel)]="terms"
+                   (ngModelChange)="onChange($event)"
+                   (focus)="checkAutoComplete()"></ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<!-- TODO: add no search result -->
+
+<ion-content class="bg-light-grey-2" >
+  <ng-template [ngIf]="listSearchUsers">
+    <!-- TODO: add translation for recent search results -->
+    <p *ngIf="showRecentSearch && recentSearchList.length" class="no-translate" margin-left>recent results</p>
+    <ion-list no-lines>
+      <ion-item *ngFor="let result of showRecentSearch? recentSearchList : listSearchUsers"
+                class="search-result"
+                [navPush]="profilePage"
+                [navParams]="{userId: result._id}"
+                (click)="saveRecentRech(result)">
+        <ion-avatar item-start>
+          <img *ngIf="result" src="{{ result | AvailablePicture }}">
+        </ion-avatar>
+        <h6 class="user-name">{{result.firstName}} {{result.lastName}}</h6>
+      </ion-item>
+    </ion-list>
+  </ng-template>
+</ion-content>
