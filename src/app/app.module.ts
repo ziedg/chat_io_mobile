@@ -73,7 +73,7 @@ import { Push } from '@ionic-native/push';
   declarations: [
     MyApp,
     ContenteditableDirective,
-    /*SignInPage,
+    SignInPage,
     SignUpPage,
     HomePage,
     CguPage,
@@ -94,13 +94,12 @@ import { Push } from '@ionic-native/push';
     ContenteditableModel,
     NavTabs,
     ScrollHideDirective,
-    ,
     AvailablePicture,
     FacebookFriendsPage,
     GifSliderComponent,
     LikeReaction,
     LoveReaction,
-    reactionModal*/
+    reactionModal
     //NewPublicationPage,
   ],
   imports: [
@@ -134,7 +133,7 @@ import { Push } from '@ionic-native/push';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    /*SignInPage,
+    SignInPage,
     HomePage,
     CguPage,
     EquipePage,
@@ -152,7 +151,7 @@ import { Push } from '@ionic-native/push';
     Comment,
     NavTabs,
     FacebookFriendsPage,
-    reactionModal,*/
+    reactionModal,
     //NewPublicationPage,
   ],
   providers: [

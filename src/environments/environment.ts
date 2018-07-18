@@ -7,10 +7,10 @@ export const environment = {
   production: false,
 
 
-   SERVER_URL: 'http://localhost:3002/',
-   IMAGE_BASE_URL: 'https://integration.speegar.com/images/'
+   //SERVER_URL: 'http://localhost:3002/',
+   //IMAGE_BASE_URL: 'https://integration.speegar.com/images/'
 
   //INTEGRATION SERVERS
-  //SERVER_URL: 'https://integration.speegar.com:3008/',
-  //IMAGE_BASE_URL: 'https://integration.speegar.com/images/'
+  SERVER_URL: 'https://integration.speegar.com:3002/',
+  IMAGE_BASE_URL: 'https://integration.speegar.com/images/'
 };
