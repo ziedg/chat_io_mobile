@@ -414,21 +414,29 @@ export class PostComponent implements OnInit {
             this.link.url = linkURL;
             this.link.title = response.results.data.ogTitle;
             this.link.description = response.results.data.ogDescription;
-            if (response.results.data.ogImage && response.results.data.ogImage != "") {
-              let a = response.results.data.ogImage.url;
-              this.link.image = response.results.data.ogImage.url;
-              if (this.link.image.search(".gif") >= 0)
-                this.isGif = true;
-              console.log("linkImage")
-              console.log(this.link.image);
-              console.log(response.results.data);
-              console.log("///////")
-              this.link.imageWidth = response.results.data.ogImage.width;
-              this.link.imageHeight = response.results.data.ogImage.height;
-              if (a.substring(a.length - 3, a.length) == "gif")
-                this.link.isGif = true;
-              else
-                this.link.isGif = false;
+            if (response.results.data.ogImage) {
+              if(response.results.data.ogImage.length == 2)
+              {
+                
+              this.link.image = response.results.data.ogImage[1].url.replace(/['"]+/g, '');
+              //console.log(response.results.data.ogImage[1].url);
+              //this.resetPreview(linkIsImage = true);
+              //console.log("image detected");
+              // jQuery("#preview-image").attr("src", this.link.image);
+              // jQuery(".file-input-holder").show();
+              // jQuery("#preview-image").show();
+              
+
+              }else{
+                var a = response.results.data.ogImage.url;
+                this.link.image = response.results.data.ogImage.url;
+                this.link.imageWidth = response.results.data.ogImage.width;
+                this.link.imageHeight = response.results.data.ogImage.height;
+                if (a.substring(a.length - 3, a.length) == "gif")
+                  this.link.isGif = true;
+                else this.link.isGif = false;
+              }
+              
             }
             else {
               this.link.image = null;
