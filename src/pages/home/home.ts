@@ -28,6 +28,7 @@ import {TranslateService} from "@ngx-translate/core";
 import { ScrollHideConfig } from './directives/scroll-hide';
 import { ScrollHideDirective } from './directives/scroll-hide';
 import {RecentRechService} from "../search/services/recentRechService";
+import { GifService } from '../../shared/services/gifService';
 //import publicationBeanList_offline from "../../offline/publications-offline";
 //import user_offline from "../../offline/user-offline";
 
@@ -86,6 +87,7 @@ export class HomePage {
               public navParams: NavParams,
               public loginService: LoginService,
               public http: Http,
+              private gifService: GifService,
               private linkView: LinkView,
               private ng2ImgMaxService: Ng2ImgMaxService,
               private changeDetector: ChangeDetectorRef,
@@ -131,11 +133,27 @@ export class HomePage {
 
 previewGIF(urlGIF){
   var linkURL = urlGIF;
-  this.link.url = linkURL;
-  this.link.isSet = true;
-  this.link.isGif = true;
-  this.linkLoading = false;
-  jQuery(".file-input-holder").hide();
+
+    this.link.url = linkURL;
+    this.link.isSet = true;
+    this.link.isGif = true;
+    this.linkLoading = false;
+    jQuery(".file-input-holder").hide();
+    var gifImageId = document.getElementById('gifImageId');
+
+    if(gifImageId){
+
+      gifImageId.onload = () => {
+        var a = "hello";
+        console.log(a);
+        this.gifService.removeAnimation(a);
+
+      }
+    }else{
+    var a = "hello";
+    this.gifService.removeAnimation(a);
+  }
+
 
 
 }

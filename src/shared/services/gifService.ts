@@ -1,31 +1,12 @@
-import { Injectable } from '@angular/core';
+
+import { Injectable, EventEmitter } from '@angular/core';
 
 
 
-
-@Injectable()
-export class GifService {
-
-     url = "https://api.tenor.com/v1/anonid?key=" + "IIGSKQEMWW83";
-     top_10_gifs;
-     next: string ="";
-     getMoreGifs: boolean = false;
-     public anon_id: string;
-    /* constructor  */
-    constructor(){
-
-
-        this.httpGetAsync(this.url, this.tenorCallback_anonid, this);
-
-
-
-
-
-    }
-
-    async httpGetAsync(theUrl, callback, that)
+export async function httpGetAsync(theUrl)
 {
-    // create the request object
+    
+    return new Promise(function (resolve, reject) {
     var xmlHttp = new XMLHttpRequest();
 
     // set the state change callback to capture when the response comes in
@@ -33,7 +14,8 @@ export class GifService {
     {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
         {
-            callback(xmlHttp.responseText, that);
+            //callback(xmlHttp.responseText, that);
+            resolve(xmlHttp.responseText);
         }
     }
 
@@ -42,82 +24,112 @@ export class GifService {
 
     // call send with no params as they were passed in on the url string
     xmlHttp.send(null);
-
-    return;
+    
+    });
 }
 
-// callback for trending top 10 GIFs
-public tenorCallback_trending(responsetext, that)
+
+export async function tenorCallback_trending(responsetext)
 {
-    // parse the json response
-    var response_objects = JSON.parse(responsetext);
+    
+    
+    return new Promise(function (resolve) {
+        
+        var response_objects = JSON.parse(responsetext);
+        var top_10_gifs = response_objects["results"];
+        next = response_objects["next"];
 
-    that.top_10_gifs = response_objects["results"];
+   
+    resolve(top_10_gifs);
+        
+    
+    });
+          
+    
 
-    that.next = response_objects["next"];
-
-    console.log("http async finished");
-
-    // load the GIFs -- for our example we will load the first GIFs preview size (nanogif) and share size (tinygif)
-
-    // document.getElementById("preview_gif").src = top_10_gifs[0]["media"][0]["nanogif"]["url"];
-
-    // document.getElementById("share_gif").src = top_10_gifs[0]["media"][0]["tinygif"]["url"];
-
-    return;
+    
 
 }
 
 // function to call the trending and category endpoints
-
+export async function grab_data(anon_id)
+{
+    
+    // data will be loaded by each call's callback
+    
+}
 
 
 // callback for anonymous id -- for first time users
-public tenorCallback_anonid(responsetext, that)
+export async function tenorCallback_anonid(responsetext)
 {
-    // parse the json response
-    let response_objects = JSON.parse(responsetext);
-    //console.log("responsetext "+response_objects["anon_id"]);
-    var anon_id = response_objects["anon_id"];
-    //console.log("anoooooooonid"+response_objects["anon_id"]);
-    // pass on to grab_data
-    that.grab_data(anon_id, that);
+    
+    return new Promise(function (resolve) {
+        var response_objects = JSON.parse(responsetext);
 
-}
-
-async  grab_data(anon_id, that)
-{ //  console.log("graaaaaab");
-    // set the apikey and limit
-    var apikey = "IIGSKQEMWW83";
-    var lmt = 50;
-    if(that.getMoreGifs){
-        //console.log(that.next);
-        // get the top 10 trending GIFs (updated through out the day) - using the default locale of en_US
-    let trending_url = "https://api.tenor.com/v1/trending?key=" + apikey + "&limit=" + lmt + "&anon_id" + anon_id + "&pos=" + that.next;
-    this.httpGetAsync(trending_url,this.tenorCallback_trending, that);
-
-    }else{
-        // get the top 10 trending GIFs (updated through out the day) - using the default locale of en_US
-    let trending_url = "https://api.tenor.com/v1/trending?key=" + apikey + "&limit=" + lmt + "&anon_id" + anon_id + "&pos=" + that.next;
-    this.httpGetAsync(trending_url,this.tenorCallback_trending, that);
-
-    }
-
-    return;
+        var anon_id = response_objects["anon_id"];
+        // set the apikey and limit
+        var apikey = "94VF61TXW797";
+        var lmt = 50;
+        
+        var trending_url = "https://api.tenor.com/v1/trending?key=" + apikey + "&limit=" + lmt + "&anon_id" + anon_id + "&pos=" + next;
+        resolve(trending_url);
+        
+        
+        });
 }
 
 
+var url = "https://api.tenor.com/v1/anonid?key=" + "94VF61TXW797";
+export var next ='';
+export var getMoreGifs: boolean = false;
 
 
 
-getGifList(): any{
-    return this.top_10_gifs;
+
+@Injectable()
+export class GifService {
+
+removeAnimationEmitter = new EventEmitter<any>();
+     
+    constructor(){
+     }
+
+
+removeAnimation(a){
+this.removeAnimationEmitter.emit(a);
+//console.log("emitteeeeeeeeed");
 }
+
+
+async getGifList(){
+    var anonRes;
+    var trendingRes;
+    var jsonRes
+    
+     await httpGetAsync(url).then(responseText => {anonRes = responseText; });
+     await tenorCallback_anonid(anonRes).then(responseText => {trendingRes = responseText; });
+     await httpGetAsync(trendingRes).then(responseText => {jsonRes = responseText;});
+     const gifs = await tenorCallback_trending(jsonRes);
+     return gifs;
+
+}
+
+
 
 async loadMoreGifs(){
-    this.getMoreGifs = true;
-    this.httpGetAsync(this.url, this.tenorCallback_anonid, this);
-
+    //getMoreGifs = true;
+    var anonRes;
+    var trendingRes;
+    var jsonRes
+    
+     await httpGetAsync(url).then(responseText => {anonRes = responseText; });
+     await tenorCallback_anonid(anonRes).then(responseText => {trendingRes = responseText; });
+     await httpGetAsync(trendingRes).then(responseText => {jsonRes = responseText; });
+     const gifs = await tenorCallback_trending(jsonRes);
+     return gifs;
 }
+
+ 
 
 }

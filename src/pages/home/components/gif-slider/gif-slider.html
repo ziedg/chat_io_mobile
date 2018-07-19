@@ -1,8 +1,54 @@
 <ion-card  padding-top="15px" *ngIf="showGif">
   <ion-icon name="close" (tap)="onTapClose()"></ion-icon>
-    <ion-slides #slides slidesPerView="3" >
-      <ion-slide  *ngFor="let Url  of UrlGifList">
-            <a (click)="gifPreview(Url)"> <img class="gif-img" [src]="Url"  /></a>
+    <ion-slides   (swipe)="swipe($event)">
+      <ion-slide  *ngFor="let Url  of UrlGifList; let i = index" [ngStyle]="{'background-image': 'url(' + Url.Preview + ')' }" style="background-repeat: no-repeat;">
+        
+        <a (click)="gifPreview(Url)"> <img class="gif-img" [src]="Url.Preview" *ngIf="(Url.Show)" /></a>
+        <div class="gif-img "  *ngIf="!Url.Show" >
+            <img class=" loader "  src="/assets/images/new/loading.png">
+          </div>
+
       </ion-slide>
+
+
+
+
+
+      <ion-slide    *ngIf="isLoadingMoreGifs">
+          <img class="loader"  src="/assets/images/new/loading.png">
+      </ion-slide>
+      <ion-slide    *ngIf="isLoadingMoreGifs">
+          <img class="loader"  src="/assets/images/new/loading.png">
+      </ion-slide>
+      <ion-slide    *ngIf="isLoadingMoreGifs">
+          <img class="loader"  src="/assets/images/new/loading.png">
+      </ion-slide>
+      <ion-slide    *ngIf="isLoadingMoreGifs">
+          <img class="loader"  src="/assets/images/new/loading.png">
+      </ion-slide>
+      <ion-slide    *ngIf="isLoadingMoreGifs">
+          <img class="loader"  src="/assets/images/new/loading.png">
+      </ion-slide>
+      <ion-slide    *ngIf="isLoadingMoreGifs">
+          <img class="loader"  src="/assets/images/new/loading.png">
+      </ion-slide>
+      <ion-slide    *ngIf="isLoadingMoreGifs">
+          <img class="loader"  src="/assets/images/new/loading.png">
+      </ion-slide>
+      <ion-slide    *ngIf="isLoadingMoreGifs">
+          <img class="loader"  src="/assets/images/new/loading.png">
+      </ion-slide>
+      <ion-slide    *ngIf="isLoadingMoreGifs">
+          <img class="loader"  src="/assets/images/new/loading.png">
+      </ion-slide>
+
+
+
+
+
+
+      <div class="gif-img  " *ngIf="isLoadingInitialGifs"  >  
+          <img class="initial-loader-img"  src="/assets/images/new/loading.png">
+      </div>
   </ion-slides>
 </ion-card>

@@ -91,7 +91,7 @@
                 </span>
 
                 <div class="noPadding" *ngIf="link.isGif">
-                  <img class="img-preview" [src]="link.url"/>
+                  <img id="gifImageId" class="img-preview" [src]="link.url"/>
                 </div>
 
                 <div class="noPadding" *ngIf="link.url && !link.isGif">
@@ -115,7 +115,7 @@
 
         </div>
 
-        <gif-slider style="width:100%;"  *ngIf="showGifSlider" (myEvent)="previewGIF($event)"
+        <gif-slider style="width:100%;"  *ngIf="showGifSlider" (onPreview)="previewGIF($event)"
                     (onClose)="closeGif($event)"></gif-slider>
 
       <ion-row class="social-row" align-items-center>

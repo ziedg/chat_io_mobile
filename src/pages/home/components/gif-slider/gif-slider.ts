@@ -1,7 +1,7 @@
 import { GifService } from '../../../../shared/services/gifService';
 
 import {AfterViewInit, Component, ElementRef, Renderer2, ViewChild, Output, EventEmitter} from '@angular/core';
-import {HomePage } from '../../home';
+
 
 
 @Component({
@@ -9,74 +9,96 @@ import {HomePage } from '../../home';
   templateUrl: 'gif-slider.html'
 })
 export class GifSliderComponent {
+
   public UrlGifList = [];
-  ListOfGifs = [];
-  NewListOfGifs = [];
-  gifLimitIndex: number = 47;
-  firstGifRequest = true;
-  @Output() myEvent = new EventEmitter();
-  @Output() onClose = new EventEmitter();
+  gifLimitIndex: number = 8;
+  previousActiveGifIndex = -1;
+  isLoadingMoreGifs: boolean = false;
+  isLoadingInitialGifs: boolean = false;
   showGif:boolean=true;
   text: string;
+  rightSwipeCounter: any = 0;
+
+  @Output() onPreview = new EventEmitter();
+  @Output() onClose = new EventEmitter();
+
+  
+
 
   constructor(private renderer: Renderer2,
               private gifService: GifService) {
-    var self = this;
+    
+  
+this.isLoadingInitialGifs = true; 
+this.gifService.getGifList().then((gifs: any[]) => {
+
+for (let i = 0; i < gifs.length; i++) {
+var GifObject = {Post: gifs[i]["media"][0]["gif"]["url"], Preview: gifs[i]["media"][0]["nanogif"]["url"], Show: true};
+
+this.UrlGifList.push(GifObject); //UrlGifList is undefined
+
+}
+this.isLoadingInitialGifs = false;
+});
   }
 
-firstFunction(_callback){
-  this.gifService.loadMoreGifs();
-  console.log("heeeeeeeeeeere");
-  _callback();
-}
+  
 
-ngOnInit(){
-  var self = this;
-  this.firstFunction(function() {
-        self.ListOfGifs = self.gifService.getGifList();
-        for( var i=0; i<self.ListOfGifs.length; i++){
-          self.UrlGifList[i] = self.ListOfGifs[i]["media"][0]["nanogif"]["url"];
+  swipe(event){
+    if(event.direction === 2) {
+      console.log('right');
+      this.rightSwipeCounter ++;
+      if(this.rightSwipeCounter >= this.gifLimitIndex){
+        this.loadMoreGifs();
+        this.rightSwipeCounter = 0;
+      }
+    }
+    if(event.direction === 4) {
+      console.log('left');
+      this.rightSwipeCounter --;
+    }
 
-        }
-        console.log("callbaack");
+  }
+
+  
+
+  loadMoreGifs() {
+    this.isLoadingMoreGifs = true;
+    this.gifService.loadMoreGifs().then((gifs: any[]) => {
+    
+      for (let i = 0; i < gifs.length; i++) {
+        var GifObject = {Post: gifs[i]["media"][0]["gif"]["url"], Preview: gifs[i]["media"][0]["nanogif"]["url"], Show: true};
+        
+        this.UrlGifList.push(GifObject); //UrlGifList is undefined
+  
+      }
+      this.isLoadingMoreGifs = false;
     });
-
-}
-
-ionViewWillEnter(){
-
-
-}
-
-loadMoreGifs(){
-  //this.gifService.loadMoreGifs();
-  //console.log(this.gifService.getGifList());
-
-
-  // if (this.firstGifRequest){
-  //   this.firstGifRequest = false;
-  //   this.gifService.loadMoreGifs();
-  //   }
-  this.NewListOfGifs = this.gifService.getGifList();
-  this.gifService.loadMoreGifs();
-  //console.log(this.NewListOfGifs);
-  var currentLength = this.UrlGifList.length;
-  for( var i=0; i<this.NewListOfGifs.length; i++){
-    this.UrlGifList[currentLength] = this.NewListOfGifs[i]["media"][0]["nanogif"]["url"];
-    currentLength++;
+    
+    this.gifLimitIndex += 8;
   }
-  //console.log(currentLength);
-  this.gifLimitIndex +=50;
-}
+
+  
 
 
-
-
-
-
-gifPreview(urlGIF){
+gifPreview(Url){
   //console.log("chiiiild");
-  this.myEvent.emit(urlGIF);
+  var urlGIF = Url.Post;
+    var j = this.previousActiveGifIndex ;
+    
+    var i = this.UrlGifList.indexOf(Url);
+    if(j != -1){
+      this.UrlGifList[j].Show = true;
+    }
+    this.UrlGifList[i].Show = false;
+    
+    this.previousActiveGifIndex = i;
+    this.gifService.removeAnimationEmitter.subscribe(a =>{
+      //console.log(this.UrlGifList[i].Show);
+      this.UrlGifList[i].Show = true;
+    });
+    this.onPreview.emit(urlGIF);
+  
 }
 
   onTapClose(){
