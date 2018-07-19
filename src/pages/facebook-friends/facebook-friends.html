@@ -1,4 +1,5 @@
-<ion-card class="border-t-b"  *ngIf="isValid">
+<ion-card class="border-t-b"  >
+        <button (click)="onClick()" ></button>
     <ion-slides #slides slidesPerView="3" >
 
             <ion-slide *ngFor="let profile of facebookProfiles">

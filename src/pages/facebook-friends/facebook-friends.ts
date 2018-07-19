@@ -41,6 +41,10 @@ export class FacebookFriendsPage {
               this.loadfacebookProfiles();  
   }
 
+  onClick(){
+    console.log(this.facebookProfiles);
+  }
+
 
   onClickProfile(profile) {
     if (this.navCtrl.getActive().name != "ProfilePage")
@@ -56,10 +60,14 @@ export class FacebookFriendsPage {
         .map((res: Response) => res.json())
         .subscribe(
           response => {
-            console.log(response);
-            Array.prototype.push.apply(this.facebookProfiles, response.message);
-            this.isValid = this.facebookProfiles.length != 0;
-            console.log("leength"+this.facebookProfiles.length);
+
+            if (response.status == 1){
+              console.log(response);
+              Array.prototype.push.apply(this.facebookProfiles, response.message);
+            }else {
+              this.isValid = false;
+              console.log(this.facebookProfiles);
+            }
 
         },
         err => {
@@ -68,7 +76,6 @@ export class FacebookFriendsPage {
           this.changeDetector.markForCheck();
         }
       );
-      
 } 
 
 loadPopularProfiles(Id_Profile?: string) {
@@ -100,6 +107,7 @@ loadPopularProfiles(Id_Profile?: string) {
       }
     );
 }
+
 
 subscribe(user: User) {
     let body = JSON.stringify({
