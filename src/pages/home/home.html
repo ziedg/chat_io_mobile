@@ -75,9 +75,10 @@
         <div class="file-input-holder">
           <div class="file-input">
             <div class="ajout-img-holder">
-              <i class="fa fa-times delete-photo-post" *ngIf="uploadedPicture || imageFromLink" aria-hidden="true"
-                 (click)="resetPublishPicture()"></i>
-              <img id="preview-image">
+                <i class="fa fa-times delete-photo-post" aria-hidden="true" *ngIf="uploadedPicture || imageFromLink"
+                (click)="resetPublishPicture()"></i>  
+              <img id="preview-image" [src]="preview_image_link">
+                  
             </div>
           </div>
 
@@ -146,8 +147,8 @@
           </button>
 
         </ion-col>
-        <input type="file" id="file-image" style="display:none" accept="image/*" (change)="uploadPhoto($event)">
-        <input type="file" id="file-image-gif" style="display:none" accept=".gif" (change)="uploadPhotoGIF($event)">
+        <!-- <input type="file" id="file-image" style="display:none" accept="image/*" (change)="uploadPhoto($event)">
+        <input type="file" id="file-image-gif" style="display:none" accept=".gif" (change)="uploadPhotoGIF($event)"> -->
       </ion-row>
 
     </ion-card>
@@ -159,10 +160,10 @@
 
        </page-facebook-friends> -->
 
-  <div>
+  <!-- <div>
     <page-facebook-friends></page-facebook-friends>
     <div style="color:transparent">facebook</div>
-  </div>
+  </div> -->
 
 
 

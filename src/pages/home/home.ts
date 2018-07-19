@@ -1,3 +1,5 @@
+import * as jQuery from "jquery";
+
 import {Component,ViewChild,} from '@angular/core';
 import {IonicPage, NavController, NavParams,Content} from 'ionic-angular';
 import {Http, Response} from "@angular/http";
@@ -21,7 +23,7 @@ import {LinkView} from '../post/services/linkView';
 import {LoginService} from "../login/services/loginService";
 import {Ng2ImgMaxService} from 'ng2-img-max';
 /*jQuery*/
-import * as jQuery from "jquery";
+
 import {PublicationBean} from '../../beans/publication-bean';
 import {TranslateService} from "@ngx-translate/core";
 
@@ -40,7 +42,7 @@ import { GifService } from '../../shared/services/gifService';
 })
 export class HomePage {
   @ViewChild(Content) content: Content;
-  public ListOfGifs = [];
+  
 
   listSearchUsers: Array<User> = [];
   showRecentSearch: Boolean;
@@ -83,6 +85,8 @@ export class HomePage {
   welcomeMsgIsShown:boolean=true;
   headerScrollConfig:ScrollHideConfig={cssProperty: 'margin-top', maxValue: 40};
   private showGifSlider:boolean = false;
+  
+  preview_image_link: any;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public loginService: LoginService,
@@ -221,55 +225,102 @@ previewGIF(urlGIF){
   changeSelectMenu(choice) {
     this.selectedMenuElement = choice;
   }
+  resetPreview(linkIsImage?) {
+    linkIsImage = linkIsImage || false;
+    
+
+    this.link.url = "";
+    this.link.isSet = false;
+    this.link.isGif = false;
+    //jQuery("#file-image").val("");
+    //jQuery("#file-image-gif").val("");
+    if(!linkIsImage) {
+      console.log("canceeel")
+      //jQuery("#preview-image").attr("src", "");
+      this.preview_image_link = "";
+      jQuery(".file-input-holder").hide();
+      jQuery("#preview-image").fadeOut();
+    }
+    this.uploadedPicture = null;
+    this.imageFromLink = false;
+    
+    this.titleEnable = false;
+    this.youtubeInput = false;
+    this.youtubeLink = "";
+    this.facebookInput = false;
+    this.facebookLink = "";
+    //jQuery(".yt-in-url").val("");
+    jQuery(".textarea-publish").html("");
+    jQuery(".youtube-preview").html("");
+    jQuery(".facebook-preview").html("");
+    this.changeDetector.markForCheck();
+
+    
+    // this.pubbg = false;
+    // this.pubclass="";
+    
+    //this.resetPreviewGIF();
+  }
 
   updatePublishTextOnPaste($event) {
     $event.preventDefault();
+    //this.resetPreview();
     let text = $event.clipboardData.getData("text/plain");
-    console.log("pasted");
     this.link.isGif = false;
+    
+    // if(this.pubbg){
+    //   text = text.replace(/(?:\r\n|\r|\n)/g, "<br>");
+    //   document.execCommand("insertHTML", false, text);
+    //   return 1;
+    // }
+    //else {
+      let linkIsImage:boolean = false;
+      if (
+        text.search("youtube.com/watch") >= 0 ||
+        text.search("youtu.be/") >= 0
+      ) {
+        //this.youtubeLink = text;
+        this.resetPreview();
+        
+        this.youtubeInput = true;
+        //jQuery(".yt-in-url").val(text);
+        this.changeDetector.markForCheck();
+        
+        
+        this.updateYoutubeFacebook(text);
+        return 1;
+      }
 
-    if (
-      text.search("youtube.com/watch") >= 0 ||
-      text.search("youtu.be/") >= 0
-    ) {
+      if (text.search("web.facebook.com") >= 0 || text.search("www.facebook.com") > 0 ||
+          text.search("m.facebook.com") > 0 || text.search("mobile.facebook.com") > 0) {
+        
+        this.resetPreview();
 
-      this.youtubeInput = true;
-      this.changeDetector.markForCheck();
-      this.youtubeLink = text;
-      this.updateYoutubeFacebook(text);
-      return 1;
-    }
-
-    if (
-      text.search("web.facebook.com") >= 0 || text.search("www.facebook.com") > 0 ||
-      text.search("m.facebook.com") > 0 || text.search("mobile.facebook.com") > 0) {
-      this.facebookInput = true;
-      this.changeDetector.markForCheck();
-      this.facebookLink = text;
-      this.updateYoutubeFacebook(text);
-      return 1;
-    }
-    if (text.search(/(\.jpg)|(\.jpeg)|(\.png)|(\.gif)$/i) > 0) {
-      console.log("image detected");
-      jQuery("#preview-image").attr("src", text);
-      jQuery(".file-input-holder").show();
-      jQuery("#preview-image").show();
-      console.log("image shown");
-      this.imageFromLink = true;
-      this.youtubeLink = null;
-      this.facebookLink = null;
-
-      this.uploadedPicture = null;
-      jQuery(".youtube-preview").html("");
-      jQuery(".facebook-preview").html("");
-      this.link.isSet = false;
-      return 1;
-    }
-    this.analyzeLink(text);
-    console.log('start');
-    text = text.replace(/(?:\r\n|\r|\n)/g, "<br>");
-    //console.log('finish');
-    document.execCommand("insertHTML", false, text);
+        this.facebookInput = true;
+        //jQuery(".yt-in-url").val(text);
+        this.changeDetector.markForCheck();
+        //this.facebookLink = text;
+        this.updateYoutubeFacebook(text);
+        return 1;
+      }
+      if (text.search(/(\.jpg)|(\.jpeg)|(\.png)|(\.gif)$/i) > 0) {
+        this.resetPreview(linkIsImage = true);
+        this.preview_image_link = text;
+        //console.log(text);
+        this.imageFromLink = true;
+        //jQuery("#preview-image").attr("src", text);
+        jQuery(".file-input-holder").show();
+        jQuery("#preview-image").show();
+        return 1;
+      }
+      //if(!linkIsImage && this.facebookLink!="" && this.youtubeLink!="") {  }
+      
+      
+      this.analyzeLink(text);
+      
+      text = text.replace(/(?:\r\n|\r|\n)/g, "<br>");
+      document.execCommand("insertHTML", false, text);
+   // }
   }
 
   updateYoutubeFacebook(videoLink: string) {
@@ -279,7 +330,7 @@ previewGIF(urlGIF){
     if (videoLink.indexOf("youtube.com") > 0 || videoLink.indexOf("youtu.be") > 0) {
       videoId = this.getIdYoutubeVideoId(videoLink);
       try {
-        jQuery(".facebook-preview").html("");
+        //jQuery(".facebook-preview").html("");
         jQuery(".youtube-preview").html(
           '<iframe width="320" height="215" src="https://www.youtube.com/embed/' +
           videoId +
@@ -298,7 +349,7 @@ previewGIF(urlGIF){
       videoId = this.getIdFacebookVideo(videoLink);
       let videoPage = this.getPageFacebookVideo(videoLink);
       try {
-        jQuery(".youtube-preview").html("");
+        //jQuery(".youtube-preview").html("");
         jQuery(".facebook-preview").html(
           '<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F' + videoPage + '%2Fvideos%2F' +
           videoId +
@@ -365,25 +416,23 @@ previewGIF(urlGIF){
 
   analyzeLink(source) {
 
-    var myArray = this.linkView.getListLinks(source);
+    let myArray = this.linkView.getListLinks(source);
 
     if (!myArray.length) {
+      //console.log("NOT A LINKKKKK");
       return 1;
     }
-    var linkURL = myArray[0];
+    let linkURL = myArray[0];
     //check if linkURL refers to speegar.com
     if (linkURL == this.link.url) {
-
       return 1;
     }
 
+    
 
-    if (this.imageFromLink) {
-      return 1
-    }
-
-
+    this.resetPreview();
     this.linkLoading = true;
+    
 
     this.http
       .get(
@@ -394,22 +443,47 @@ previewGIF(urlGIF){
       .subscribe(
         response => {
           if (response.results.success) {
-            jQuery("#publishDiv").empty();
+            //jQuery("#publishDiv").empty();
+            
+            var rest = jQuery("#publishDiv").text().replace(linkURL,'');
+            rest = rest.replace(/(?:\r\n|\r|\n)/g, "<br>");
+            //console.log(rest);
+            jQuery(".textarea-publish").html(rest);
             //this.resetPublishPicture();
-            jQuery(".video-preview").html("");
+            //jQuery(".video-preview").html("");
             //this.form.controls.publicationYoutubeLink.updateValue('');
-
+            //
             var r = /:\/\/(.[^/]+)/;
             this.linkDomain = linkURL.match(r)[1];
-            //this.link.url = linkURL.substring(0, linkURL.length - 6);
+//              this.link.url = linkURL.substring(0, linkURL.length - 6);
             this.link.url = linkURL;
+
             this.link.title = response.results.data.ogTitle;
             this.link.description = response.results.data.ogDescription;
             if (response.results.data.ogImage) {
+              if(response.results.data.ogImage.length == 2)
+              {
+                
+              this.link.image = response.results.data.ogImage[1].url.replace(/['"]+/g, '');
+              //console.log(response.results.data.ogImage);
+              //
+              //this.resetPreview(linkIsImage = true);
+              //console.log("image detected");
+              // jQuery("#preview-image").attr("src", this.link.image);
+              // jQuery(".file-input-holder").show();
+              // jQuery("#preview-image").show();
+              
+
+              }else{
+              
               this.link.image = response.results.data.ogImage.url;
+              //console.log(response.results.data.ogImage);
               this.link.imageWidth = response.results.data.ogImage.width;
               this.link.imageHeight = response.results.data.ogImage.height;
-
+              
+              }
+              
+              
             } else {
               this.link.image = null;
               this.link.imageWidth = 0;
@@ -425,10 +499,15 @@ previewGIF(urlGIF){
           console.error("error in link API;");
         },
         () => {
+          if(this.link.isSet) {
+            
+            this.link.isSet = true;
+          }
           this.linkLoading = false;
         }
       );
   }
+
 
   publish(publishDivRef) {
 
@@ -554,9 +633,10 @@ previewGIF(urlGIF){
   }
 
   resetPublish() {
-    jQuery("#file-image").val("");
-    jQuery("#file-image-gif").val("");
-    jQuery("#preview-image").attr("src", "");
+    // jQuery("#file-image").val("");
+    // jQuery("#file-image-gif").val("");
+    //jQuery("#preview-image").attr("src", "");
+    this.preview_image_link = "";
     jQuery("#preview-image").fadeOut();
     this.uploadedPicture = null;
     this.titleEnable = false;
@@ -564,7 +644,7 @@ previewGIF(urlGIF){
     this.youtubeLink = "";
     this.facebookInput = false;
     this.facebookLink = "";
-    jQuery(".yt-in-url").val("");
+    //jQuery(".yt-in-url").val("");
     jQuery(".youtube-preview").html("");
     jQuery(".facebook-preview").html("");
     this.loadingPublish = false;
