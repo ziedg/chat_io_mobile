@@ -87,6 +87,7 @@ export class HomePage {
   private showGifSlider:boolean = false;
   
   preview_image_link: any;
+  userPublishInput: boolean = false;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public loginService: LoginService,
@@ -177,16 +178,21 @@ previewGIF(urlGIF){
     jQuery("#file-image").click();
   }
 
-  addPhotoGIF() {
-    jQuery("#file-image-gif").click();
-  }
+  
 
   uploadPhoto($event) {
+    
     let inputValue = $event.target;
 
     if (inputValue != null && null != inputValue.files[0]) {
-      this.uploadedPicture = inputValue.files[0];
-      console.log(this.uploadedPicture);
+      let inputFile = inputValue.files[0];
+      this.resetPreview();
+      if(inputFile.name.endsWith(".gif") || inputFile.name.endsWith(".GIF")) {
+        //
+        this.uploadPhotoGIF($event);
+        return
+      }
+      this.uploadedPicture = inputFile;
       //change
 
       this.ng2ImgMaxService
@@ -195,14 +201,14 @@ previewGIF(urlGIF){
           this.uploadedPicture = result;
 
           previewFile(this.uploadedPicture);
-          jQuery(".youtube-preview").html("");
-          jQuery(".facebook-preview").html("");
+          this.preview_image_link = prev_img_link;
+          console.log("it ends with gif !");
           //this.form.controls.publicationYoutubeLink.updateValue('');
           this.closeLinkAPI();
           return this.uploadedPicture;
         });
 
-
+      
     } else {
       this.uploadedPicture = null;
       return null;
@@ -238,6 +244,7 @@ previewGIF(urlGIF){
       console.log("canceeel")
       //jQuery("#preview-image").attr("src", "");
       this.preview_image_link = "";
+      //prev_img_link = "";
       jQuery(".file-input-holder").hide();
       jQuery("#preview-image").fadeOut();
     }
@@ -250,7 +257,7 @@ previewGIF(urlGIF){
     this.facebookInput = false;
     this.facebookLink = "";
     //jQuery(".yt-in-url").val("");
-    jQuery(".textarea-publish").html("");
+    //jQuery(".textarea-publish").html("");
     jQuery(".youtube-preview").html("");
     jQuery(".facebook-preview").html("");
     this.changeDetector.markForCheck();
@@ -260,6 +267,11 @@ previewGIF(urlGIF){
     // this.pubclass="";
     
     //this.resetPreviewGIF();
+  }
+
+  cancelPublication(){
+    
+    this.resetPublish();
   }
 
   updatePublishTextOnPaste($event) {
@@ -445,9 +457,9 @@ previewGIF(urlGIF){
           if (response.results.success) {
             //jQuery("#publishDiv").empty();
             
-            var rest = jQuery("#publishDiv").text().replace(linkURL,'');
+            var rest = jQuery(".textarea-publish").text().replace(linkURL,'');
             rest = rest.replace(/(?:\r\n|\r|\n)/g, "<br>");
-            //console.log(rest);
+            console.log(rest);
             jQuery(".textarea-publish").html(rest);
             //this.resetPublishPicture();
             //jQuery(".video-preview").html("");
@@ -616,6 +628,13 @@ previewGIF(urlGIF){
 
   checkArabic(firstLetter) {
     this.arabicText = this.arabicRegex.test(firstLetter);
+
+  }
+  checkTyping(publishDivRef) {
+    let text = publishDivRef.textContent;
+    this.userPublishInput = text.length != 0;
+    //this.checkTag(publishDivRef);
+    this.checkArabic(text);
 
   }
 
@@ -914,6 +933,7 @@ previewGIF(urlGIF){
     this.navCtrl.push(SearchPage);
   }
 }
+export var prev_img_link ="abc.jpg";
 
 export function readURL(input) {
   if (input.files && input.files[0]) {
@@ -932,6 +952,7 @@ export function readURL(input) {
   }
 }
 
+
 function previewFile(uploadedFile) {
   //let preview = jQuery("#preview-image");
   let file = uploadedFile;
@@ -941,7 +962,9 @@ function previewFile(uploadedFile) {
     "load",
     function () {
       //preview.att.src = reader.result;
-      jQuery("#preview-image").attr("src", reader.result);
+      prev_img_link = reader.result;
+      console.log(prev_img_link);
+      //jQuery("#preview-image").attr("src", reader.result);
       jQuery(".file-input-holder").fadeIn(500);
       jQuery("#preview-image").fadeIn(500);
     },

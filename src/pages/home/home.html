@@ -65,7 +65,7 @@
           <div id="publishDiv"
                [ngClass]="{'m-t-12px': titleEnable, 'textarea-publish': true, 'arabic-text': arabicText}"
                (paste)="updatePublishTextOnPaste($event)"
-               contenteditable="true" data-text="Votre blague ici.." (keyup)="checkArabic(publishDivRef.textContent[0])"
+               contenteditable="true" data-text="Votre blague ici.." (keyup)="checkTyping(publishDivRef)"
                #publishDivRef style="width: calc(100% - 80px)"
           ></div>
 
@@ -141,14 +141,27 @@
           </button>
         </ion-col>
 
-        <ion-col offset-2>
+        
+        <ion-col offset-0>
+          <button *ngIf=" showGifSlider || (userPublishInput || youtubeLink || facebookLink || uploadedPicture|| link.isSet || imageFromLink)"
+            class="publish-button same_home" (click)="cancelPublication()"
+            style="z-index:1;background-color:transparent;border:1px solid #ccc">
+            <p style="color: black;margin-top: 8%;"> {{'publication_cancel' | translate}} </p>
+          </button>
+          
+
+        </ion-col>
+
+        <ion-col offset-0>
           <button class="publish-button same_home" type="submit">
             {{ 'home_publish_button' | translate }}
           </button>
+          
 
         </ion-col>
-        <!-- <input type="file" id="file-image" style="display:none" accept="image/*" (change)="uploadPhoto($event)">
-        <input type="file" id="file-image-gif" style="display:none" accept=".gif" (change)="uploadPhotoGIF($event)"> -->
+
+        <input type="file" id="file-image" style="display:none" accept="image/*" (change)="uploadPhoto($event)">
+        <!-- <input type="file" id="file-image-gif" style="display:none" accept=".gif" (change)="uploadPhotoGIF($event)"> --> 
       </ion-row>
 
     </ion-card>
@@ -172,10 +185,10 @@
     [publication]=publication
     (notifyDeletePost)="deletePost($event)"></post>
 
-    <div *ngIf="i == 2">
+    <!-- <div *ngIf="i == 2">
         <page-facebook-friends></page-facebook-friends>
         <div style="color:transparent">facebook suggestions</div>
-      </div>
+      </div> -->
 </div>
 
 
