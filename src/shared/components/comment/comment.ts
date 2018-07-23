@@ -5,17 +5,17 @@ import { Http, Response } from '@angular/http';
 import { TranslateService } from '@ngx-translate/core';
 
 import {AlertController, NavController} from 'ionic-angular';
-import { ProfilePage } from "../../../profile/pages/profile/profile"
+import { ProfilePage } from "../../../pages/profile/pages/profile/profile"
 
-import { environment } from '../../../../environments/environment';
-import { CommentBean } from '../../../../beans/comment-bean';
-import { EmojiListBean } from '../../../../beans/emoji-list-bean';
-import { PublicationBean } from '../../../../beans/publication-bean';
-import { User } from '../../../../beans/user';
-import { LoginService } from '../../../login/services/loginService';
-import { AppSettings } from '../../../../conf/app-settings';
-import * as pathUtils from '../../../../utils/path.utils';
-import { DateService } from '../../../../shared/services/dateService';
+import { environment } from '../../../environments/environment';
+import { CommentBean } from '../../../beans/comment-bean';
+import { EmojiListBean } from '../../../beans/emoji-list-bean';
+import { PublicationBean } from '../../../beans/publication-bean';
+import { User } from '../../../beans/user';
+import { LoginService } from '../../../pages/login/services/loginService';
+import { AppSettings } from '../../../conf/app-settings';
+import * as pathUtils from '../../../utils/path.utils';
+import { DateService } from '../../services/dateService';
 import { EmojiService } from '../../services/emojiService';
 
 

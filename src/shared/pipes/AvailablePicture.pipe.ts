@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import {User} from "../../../beans/user";
-import {PublicationBean} from "../../../beans/publication-bean";
+import {User} from "../../beans/user";
+import {PublicationBean} from "../../beans/publication-bean";
 
 
 @Pipe({

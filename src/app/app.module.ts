@@ -25,19 +25,19 @@ import { SupportTabsPage } from '../pages/info/pages/support-tabs/support-tabs';
 import { SuggestionsPage } from '../pages/suggestions/suggestions';
 import {PostPage} from '../pages/post/pages/post';
 import { NavTabs } from '../pages/nav-tabs/nav-tabs';
-import  {SearchPage} from '../pages/search/search';
+import  {SearchPage} from '../pages/home/components/search/search';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { FacebookFriendsPage } from '../pages/facebook-friends/facebook-friends';
+import { FacebookFriendsPage } from '../pages/home/components/facebook-friends/facebook-friends';
 import { GifSliderComponent } from '../pages/home/components/gif-slider/gif-slider';
 
 
 /*Components*/
-import { PostComponent } from '../pages/post/components/post/post';
-import { Comment } from '../pages/post/components/comment/comment';
-import { LikeReaction } from '../pages/post/components/post/reactions/like-reaction/like-reaction';
-import { LoveReaction } from '../pages/post/components/post/reactions/love-reaction/love-reaction';
-import {reactionModal} from "../pages/post/components/post/reaction-modal/reaction-modal";
+import { PostComponent } from '../shared/components/post/post';
+import { Comment } from '../shared/components/comment/comment';
+import { LikeReaction } from '../shared/components/post/reactions/like-reaction/like-reaction';
+import { LoveReaction } from '../shared/components/post/reactions/love-reaction/love-reaction';
+import {reactionModal} from "../shared/components/post/reaction-modal/reaction-modal";
 
 //import  { NewPublicationPage } from '../pages/home/components/new-publication/new-publication';
 import {HttpModule, ConnectionBackend, Http, RequestOptions, XHRBackend} from '@angular/http';
@@ -48,18 +48,18 @@ import {HttpModule, ConnectionBackend, Http, RequestOptions, XHRBackend} from '@
 import { LoginService } from '../pages/login/services/loginService';
 import { httpFactory} from "../utils/factories/http.factory";
 import { HttpClientModule, HttpClient} from "@angular/common/http";
-import { EmojiService } from '../pages/post/services/emojiService';
+import { EmojiService } from '../shared/services/emojiService';
 
 import { DateService } from '../shared/services/dateService';
-import { PostService } from '../pages/post/services/postService';
-import { RecentRechService } from '../pages/search/services/recentRechService';
+import { PostService } from '../shared/services/postService';
+import { RecentRechService } from '../pages/home/components/search/services/recentRechService';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 
 
 import { ContenteditableModel } from '../pages/post/pages/contenteditable-model';
-import { LinkView } from '../pages/post/services/linkView';
-import {AvailablePicture} from "../pages/profile/pipes/AvailablePicture.pipe";
+import { LinkView } from '../shared/services/linkView';
+import {AvailablePicture} from "../shared/pipes/AvailablePicture.pipe";
 
 import { ScrollHideDirective } from '../pages/home/directives/scroll-hide';
 import { AngularFireModule } from 'angularfire2';

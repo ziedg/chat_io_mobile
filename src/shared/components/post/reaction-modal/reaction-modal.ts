@@ -2,16 +2,16 @@ import {Component,ChangeDetectorRef} from '@angular/core';
 
 import {IonicPage, NavParams, ViewController} from "ionic-angular";
 
-import { environment } from '../../../../../environments/environment';
-import * as pathUtils from '../../../../../utils/path.utils';
-import {AppSettings} from '../../../../../conf/app-settings';
+import { environment } from '../../../../environments/environment';
+import * as pathUtils from '../../../../utils/path.utils';
+import {AppSettings} from '../../../../conf/app-settings';
 import { Http, Response } from "@angular/http";
 
-import { MinifiedUser } from "../../../../../beans/Minified-user";
-import {PublicationBean} from "../../../../../beans/publication-bean";
-import {User} from "../../../../../beans/user";
+import { MinifiedUser } from "../../../../beans/Minified-user";
+import {PublicationBean} from "../../../../beans/publication-bean";
+import {User} from "../../../../beans/user";
 
-import {LoginService} from "../../../../login/services/loginService";
+import {LoginService} from "../../../../pages/login/services/loginService";
 
 
 @IonicPage()

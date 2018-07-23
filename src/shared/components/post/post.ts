@@ -7,29 +7,29 @@ import {AlertController, ActionSheetController, NavController, NavParams,ModalCo
 
 import {SafeResourceUrl, DomSanitizer} from '@angular/platform-browser';
 
-import {AppSettings} from '../../../../conf/app-settings';
+import {AppSettings} from '../../../conf/app-settings';
 import {Http, Response} from '@angular/http';
 
-import {User} from '../../../../beans/user';
-import * as pathUtils from '../../../../utils/path.utils';
-import {environment} from '../../../../environments/environment'
+import {User} from '../../../beans/user';
+import * as pathUtils from '../../../utils/path.utils';
+import {environment} from '../../../environments/environment'
 
 import {PostService} from '../../services/postService';
-import {DateService} from '../../../../shared/services/dateService';
-import {LoginService} from '../../../login/services/loginService';
+import {DateService} from '../../services/dateService';
+import {LoginService} from '../../../pages/login/services/loginService';
 import {EmojiService} from '../../services/emojiService';
 
-import {PostPage} from '../../pages/post';
-import {EmojiListBean} from '../../../../beans/emoji-list-bean';
-import {LinkBean} from '../../../../beans/linkBean';
-import {ProfilePage} from '../../../profile/pages/profile/profile';
+import {PostPage} from '../../../pages/post/pages/post';
+import {EmojiListBean} from '../../../beans/emoji-list-bean';
+import {LinkBean} from '../../../beans/linkBean';
+import {ProfilePage} from '../../../pages/profile/pages/profile/profile';
 import {Ng2ImgMaxService} from 'ng2-img-max';
 
-import {PublicationBean} from "../../../../beans/publication-bean";
-import {CommentBean} from '../../../../beans/comment-bean';
+import {PublicationBean} from "../../../beans/publication-bean";
+import {CommentBean} from '../../../beans/comment-bean';
 
 import * as jQuery from "jquery";
-import {HomePage} from "../../../home/home";
+import {HomePage} from "../../../pages/home/home";
 import {reactionModal} from "./reaction-modal/reaction-modal";
 
 @Component({

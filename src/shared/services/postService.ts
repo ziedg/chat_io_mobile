@@ -3,14 +3,14 @@ import 'rxjs/add/operator/map';
 import {ChangeDetectorRef, Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 
-import {environment} from '../../../environments/environment';
-import {PublicationBean} from '../../../beans/publication-bean';
-import {User} from '../../../beans/user';
-import {LoginService} from '../../login/services/loginService';
+import {environment} from '../../environments/environment';
+import {PublicationBean} from '../../beans/publication-bean';
+import {User} from '../../beans/user';
+import {LoginService} from '../../pages/login/services/loginService';
 import {LinkView} from './linkView';
-import {AppSettings} from "../../../conf/app-settings";
+import {AppSettings} from "../../conf/app-settings";
 import {NavController} from "ionic-angular";
-import {PostPage} from "../pages/post";
+import {PostPage} from "../../pages/post/pages/post";
 
 @Injectable()
 export class PostService {

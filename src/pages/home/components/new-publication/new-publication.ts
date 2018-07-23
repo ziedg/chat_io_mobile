@@ -14,7 +14,7 @@ import {LinkBean} from '../../../../beans/linkBean';
 /*pages*/
 
 /*service*/
-import {LinkView} from '../../../post/services/linkView';
+import {LinkView} from '../../../../shared/services/linkView';
 import {LoginService} from "../../../login/services/loginService";
 import {Ng2ImgMaxService} from 'ng2-img-max';
 /*jQuery*/

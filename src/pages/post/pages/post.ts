@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OnInit } from '@angular/core';
 
-import { PostService } from '../services/postService';
+import { PostService } from '../../../shared/services/postService';
 
 @IonicPage()
 @Component({

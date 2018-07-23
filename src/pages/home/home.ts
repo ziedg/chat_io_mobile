@@ -16,10 +16,10 @@ import {LinkBean} from '../../beans/linkBean';
 /*pages*/
 import {SuggestionsPage} from "../suggestions/suggestions";
 import {ProfilePage} from "../profile/pages/profile/profile";
-import {SearchPage} from "../search/search";
+import {SearchPage} from "./components/search/search";
 
 /*service*/
-import {LinkView} from '../post/services/linkView';
+import {LinkView} from '../../shared/services/linkView';
 import {LoginService} from "../login/services/loginService";
 import {Ng2ImgMaxService} from 'ng2-img-max';
 /*jQuery*/
@@ -29,7 +29,7 @@ import {TranslateService} from "@ngx-translate/core";
 
 import { ScrollHideConfig } from './directives/scroll-hide';
 import { ScrollHideDirective } from './directives/scroll-hide';
-import {RecentRechService} from "../search/services/recentRechService";
+import {RecentRechService} from "./components/search/services/recentRechService";
 import { GifService } from '../../shared/services/gifService';
 //import publicationBeanList_offline from "../../offline/publications-offline";
 //import user_offline from "../../offline/user-offline";

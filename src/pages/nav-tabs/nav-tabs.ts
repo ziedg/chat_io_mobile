@@ -1,7 +1,7 @@
 import { Component,ViewChild } from '@angular/core';
 import { NavController,Tabs } from 'ionic-angular';
 import {HomePage} from "../home/home";
-import {SearchPage} from "../search/search";
+import {SearchPage} from "../home/components/search/search";
 import {SuggestionsPage} from "../suggestions/suggestions";
 import {NotificationsPage} from "../notifications/notifications";
 import {ProfilePage} from "../profile/pages/profile/profile";

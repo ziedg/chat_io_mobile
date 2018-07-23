@@ -13,7 +13,7 @@ import {PostPage} from "../post/pages/post";
 import {NotificationBean} from "../../beans/notification-bean";
 
 import { PublicationBean } from "../../beans/publication-bean";
-import { PostService } from "../post/services/postService";
+import { PostService } from "../../shared/services/postService";
 
 //import notifications_offline from "../../offline/notifications-offline";
 
