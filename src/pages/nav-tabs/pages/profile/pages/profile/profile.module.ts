@@ -5,7 +5,7 @@ import { ChangeProfilePage } from "../change-profile/change-profile";
 import { ChangeProfileTabsPage } from "../change-profile-tabs/change-profile-tabs";
 import { ChangePasswordPage } from "../change-password/change-password";
 import { CommonModule } from "@angular/common";
-import {AvailablePicture} from "../../../../shared/pipes/AvailablePicture.pipe";
+import {AvailablePicture} from "../../../../../../shared/pipes/AvailablePicture.pipe";
 
 @NgModule({
   declarations: [

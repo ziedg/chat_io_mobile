@@ -4,11 +4,11 @@ import { Http, Response } from '@angular/http';
 
 import { TranslateService } from '@ngx-translate/core';
 
-import { environment } from '../../../../environments/environment';
-import { User } from '../../../../beans/user';
-import { LoginService } from '../../../login/services/loginService';
-import { AppSettings } from '../../../../conf/app-settings';
-import * as pathUtils from '../../../../utils/path.utils';
+import { environment } from '../../../../../../environments/environment';
+import { User } from '../../../../../../beans/user';
+import { LoginService } from '../../../../../login/services/loginService';
+import { AppSettings } from '../../../../../../conf/app-settings';
+import * as pathUtils from '../../../../../../utils/path.utils';
 import swal from 'sweetalert2';
 
 

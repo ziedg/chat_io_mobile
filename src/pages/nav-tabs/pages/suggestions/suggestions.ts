@@ -1,11 +1,11 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {User} from "../../beans/user";
-import {environment} from "../../environments/environment";
-import {AppSettings} from "../../conf/app-settings";
+import {User} from "../../../../beans/user";
+import {environment} from "../../../../environments/environment";
+import {AppSettings} from "../../../../conf/app-settings";
 import {Http, Response} from "@angular/http";
 import * as _ from "lodash";
-import * as pathUtils from "../../utils/path.utils";
+import * as pathUtils from "../../../../utils/path.utils";
 import {ProfilePage} from "../profile/pages/profile/profile";
 
 

@@ -22,14 +22,14 @@ import {EmojiService} from '../../services/emojiService';
 import {PostPage} from '../../../pages/post/pages/post';
 import {EmojiListBean} from '../../../beans/emoji-list-bean';
 import {LinkBean} from '../../../beans/linkBean';
-import {ProfilePage} from '../../../pages/profile/pages/profile/profile';
+import {ProfilePage} from '../../../pages/nav-tabs/pages/profile/pages/profile/profile';
 import {Ng2ImgMaxService} from 'ng2-img-max';
 
 import {PublicationBean} from "../../../beans/publication-bean";
 import {CommentBean} from '../../../beans/comment-bean';
 
 import * as jQuery from "jquery";
-import {HomePage} from "../../../pages/home/home";
+import {HomePage} from "../../../pages/nav-tabs/pages/home/home";
 import {reactionModal} from "./reaction-modal/reaction-modal";
 
 @Component({

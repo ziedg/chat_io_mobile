@@ -1,10 +1,10 @@
 import { Component,ViewChild } from '@angular/core';
 import { NavController,Tabs } from 'ionic-angular';
-import {HomePage} from "../home/home";
-import {SearchPage} from "../home/components/search/search";
-import {SuggestionsPage} from "../suggestions/suggestions";
-import {NotificationsPage} from "../notifications/notifications";
-import {ProfilePage} from "../profile/pages/profile/profile";
+import {HomePage} from "./pages/home/home";
+import {SearchPage} from "./pages/home/components/search/search";
+import {SuggestionsPage} from "./pages/suggestions/suggestions";
+import {NotificationsPage} from "./pages/notifications/notifications";
+import {ProfilePage} from "./pages/profile/pages/profile/profile";
 
 import { Response, Http } from "@angular/http";
 import { environment } from '../../environments/environment';

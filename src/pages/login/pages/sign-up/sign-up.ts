@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {LoadingController, NavController, NavParams} from 'ionic-angular';
 import { SignInPage } from "../sign-in/sign-in";
-import { HomePage } from "../../../home/home";
+import { HomePage } from "../../../nav-tabs/pages/home/home";
 //import { emailValidator } from '../../../utils/validationService';
 import * as pathUtils from '../../../../utils/path.utils';
 import { LoginService } from '../../services/loginService';

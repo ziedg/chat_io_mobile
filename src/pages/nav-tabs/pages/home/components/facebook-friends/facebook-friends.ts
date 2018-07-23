@@ -1,16 +1,16 @@
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
-import { User } from '../../../../beans/user';
-import { LoginService } from '../../../login/services/loginService';
+import { User } from '../../../../../../beans/user';
+import { LoginService } from '../../../../../login/services/loginService';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 //import 'rxjs/add/operator/map';
 import { ChangeDetectorRef, Component, EventEmitter, Output } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { environment } from '../../../../environments/environment';
-import {AppSettings} from "../../../../conf/app-settings";
-import * as pathUtils from "../../../../utils/path.utils";
+import { environment } from '../../../../../../environments/environment';
+import {AppSettings} from "../../../../../../conf/app-settings";
+import * as pathUtils from "../../../../../../utils/path.utils";
 import { ProfilePage } from '../../../profile/pages/profile/profile';
 
 

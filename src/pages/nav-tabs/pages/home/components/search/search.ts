@@ -2,11 +2,11 @@ import {Component, ChangeDetectorRef} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {RecentRechService} from './services/recentRechService';
 import {ProfilePage} from '../../../profile/pages/profile/profile';
-import {User} from '../../../../beans/user';
-import {AppSettings} from '../../../../conf/app-settings';
-import {environment} from '../../../../environments/environment';
+import {User} from '../../../../../../beans/user';
+import {AppSettings} from '../../../../../../conf/app-settings';
+import {environment} from '../../../../../../environments/environment';
 import {Http, Response} from '@angular/http';
-import * as pathUtils from '../../../../utils/path.utils';
+import * as pathUtils from '../../../../../../utils/path.utils';
 import * as jQuery from "jquery";
 
 

@@ -4,22 +4,22 @@ import {Http, Response} from "@angular/http";
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {ChangeDetectorRef} from "@angular/core";
 /* conf */
-import {AppSettings} from "../../../../conf/app-settings";
+import {AppSettings} from "../../../../../../conf/app-settings";
 /* Utils */
-import * as pathUtils from "../../../../utils/path.utils";
-import {environment} from "../../../../environments/environment";
+import * as pathUtils from "../../../../../../utils/path.utils";
+import {environment} from "../../../../../../environments/environment";
 /*beans*/
-import {User} from '../../../../beans/user';
-import {LinkBean} from '../../../../beans/linkBean';
+import {User} from '../../../../../../beans/user';
+import {LinkBean} from '../../../../../../beans/linkBean';
 /*pages*/
 
 /*service*/
-import {LinkView} from '../../../../shared/services/linkView';
-import {LoginService} from "../../../login/services/loginService";
+import {LinkView} from '../../../../../../shared/services/linkView';
+import {LoginService} from "../../../../../login/services/loginService";
 import {Ng2ImgMaxService} from 'ng2-img-max';
 /*jQuery*/
 import * as jQuery from "jquery";
-import {PublicationBean} from '../../../../beans/publication-bean';
+import {PublicationBean} from '../../../../../../beans/publication-bean';
 import {TranslateService} from "@ngx-translate/core";
 
 

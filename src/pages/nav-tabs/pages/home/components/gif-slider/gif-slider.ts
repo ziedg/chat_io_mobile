@@ -1,4 +1,4 @@
-import { GifService } from '../../../../shared/services/gifService';
+import { GifService } from '../../../../../../shared/services/gifService';
 
 import {AfterViewInit, Component, ElementRef, Renderer2, ViewChild, Output, EventEmitter} from '@angular/core';
 

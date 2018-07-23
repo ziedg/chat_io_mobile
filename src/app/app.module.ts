@@ -12,24 +12,24 @@ import { MyApp } from './app.component';
 //pages
 import { SignInPage } from '../pages/login/pages/sign-in/sign-in';
 import { SignUpPage } from '../pages/login/pages/sign-up/sign-up';
-import { HomePage } from '../pages/home/home';
+import { HomePage } from '../pages/nav-tabs/pages/home/home';
 import { CguPage } from '../pages/info/pages/cgu/cgu';
 import { EquipePage } from '../pages/info/pages/equipe/equipe';
-import { ChangePasswordPage } from '../pages/profile/pages/change-password/change-password';
-import { ChangeProfilePage } from '../pages/profile/pages/change-profile/change-profile';
-import { ChangeProfileTabsPage } from '../pages/profile/pages/change-profile-tabs/change-profile-tabs';
-import { NotificationsPage } from '../pages/notifications/notifications';
-import { ProfilePage } from '../pages/profile/pages/profile/profile';
+import { ChangePasswordPage } from '../pages/nav-tabs/pages/profile/pages/change-password/change-password';
+import { ChangeProfilePage } from '../pages/nav-tabs/pages/profile/pages/change-profile/change-profile';
+import { ChangeProfileTabsPage } from '../pages/nav-tabs/pages/profile/pages/change-profile-tabs/change-profile-tabs';
+import { NotificationsPage } from '../pages/nav-tabs/pages/notifications/notifications';
+import { ProfilePage } from '../pages/nav-tabs/pages/profile/pages/profile/profile';
 import { ProposDeNousPage } from '../pages/info/pages/propos-de-nous/propos-de-nous';
 import { SupportTabsPage } from '../pages/info/pages/support-tabs/support-tabs';
-import { SuggestionsPage } from '../pages/suggestions/suggestions';
+import { SuggestionsPage } from '../pages/nav-tabs/pages/suggestions/suggestions';
 import {PostPage} from '../pages/post/pages/post';
 import { NavTabs } from '../pages/nav-tabs/nav-tabs';
-import  {SearchPage} from '../pages/home/components/search/search';
+import  {SearchPage} from '../pages/nav-tabs/pages/home/components/search/search';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { FacebookFriendsPage } from '../pages/home/components/facebook-friends/facebook-friends';
-import { GifSliderComponent } from '../pages/home/components/gif-slider/gif-slider';
+import { FacebookFriendsPage } from '../pages/nav-tabs/pages/home/components/facebook-friends/facebook-friends';
+import { GifSliderComponent } from '../pages/nav-tabs/pages/home/components/gif-slider/gif-slider';
 
 
 /*Components*/
@@ -52,7 +52,7 @@ import { EmojiService } from '../shared/services/emojiService';
 
 import { DateService } from '../shared/services/dateService';
 import { PostService } from '../shared/services/postService';
-import { RecentRechService } from '../pages/home/components/search/services/recentRechService';
+import { RecentRechService } from '../pages/nav-tabs/pages/home/components/search/services/recentRechService';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 
@@ -61,7 +61,7 @@ import { ContenteditableModel } from '../pages/post/pages/contenteditable-model'
 import { LinkView } from '../shared/services/linkView';
 import {AvailablePicture} from "../shared/pipes/AvailablePicture.pipe";
 
-import { ScrollHideDirective } from '../pages/home/directives/scroll-hide';
+import { ScrollHideDirective } from '../pages/nav-tabs/pages/home/directives/scroll-hide';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 //import {GifSlider} from "../pages/home/components/new-publication/gif-slider/gif-slider";

@@ -5,16 +5,16 @@ import { Http, Response } from '@angular/http';
 
 import { ChangeProfilePage } from '../change-profile/change-profile';
 import { ChangePasswordPage } from '../change-password/change-password';
-import { PublicationBean } from '../../../../beans/publication-bean';
+import { PublicationBean } from '../../../../../../beans/publication-bean';
 
-import { AppSettings } from "../../../../conf/app-settings";
-import * as pathUtils from "../../../../utils/path.utils";
-import { environment } from "../../../../environments/environment";
-import {User} from "../../../../beans/user";
+import { AppSettings } from "../../../../../../conf/app-settings";
+import * as pathUtils from "../../../../../../utils/path.utils";
+import { environment } from "../../../../../../environments/environment";
+import {User} from "../../../../../../beans/user";
 import {TranslateService} from "@ngx-translate/core";
-import {LoginService} from "../../../login/services/loginService";
-import {SignInPage} from "../../../login/pages/sign-in/sign-in";
-import publicationBeanList_offline from "../../../../offline/publications-offline";
+import {LoginService} from "../../../../../login/services/loginService";
+import {SignInPage} from "../../../../../login/pages/sign-in/sign-in";
+import publicationBeanList_offline from "../../../../../../offline/publications-offline";
 
 import * as jQuery from "jquery";
 

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {GifListBean} from "../../../../../../beans/gif-list-bean";
-import {GifBean} from "../../../../../../beans/gif-bean";
+import {GifListBean} from "../../../../../../../../beans/gif-list-bean";
+import {GifBean} from "../../../../../../../../beans/gif-bean";
 
 @Injectable()
 export class GifService {

@@ -1,19 +1,19 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import {User} from "../../beans/user";
-import {LoginService} from "../login/services/loginService";
+import {User} from "../../../../beans/user";
+import {LoginService} from "../../../login/services/loginService";
 import {TranslateService} from "@ngx-translate/core";
-import {AppSettings} from '../../conf/app-settings';
-import {environment} from '../../environments/environment';
+import {AppSettings} from '../../../../conf/app-settings';
+import {environment} from '../../../../environments/environment';
 import {Http, Response} from '@angular/http';
-import * as pathUtils from '../../utils/path.utils';
-import {DateService} from "../../shared/services/dateService";
+import * as pathUtils from '../../../../utils/path.utils';
+import {DateService} from "../../../../shared/services/dateService";
 import {ProfilePage} from "../profile/pages/profile/profile";
-import {PostPage} from "../post/pages/post";
-import {NotificationBean} from "../../beans/notification-bean";
+import {PostPage} from "../../../post/pages/post";
+import {NotificationBean} from "../../../../beans/notification-bean";
 
-import { PublicationBean } from "../../beans/publication-bean";
-import { PostService } from "../../shared/services/postService";
+import { PublicationBean } from "../../../../beans/publication-bean";
+import { PostService } from "../../../../shared/services/postService";
 
 //import notifications_offline from "../../offline/notifications-offline";
 
